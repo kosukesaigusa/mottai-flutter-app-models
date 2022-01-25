@@ -1,0 +1,69 @@
+{
+  "Firestore": {
+    "collection": {
+      "mottaiUsers": {
+        "className": "MottaiUser",
+        "documentId": "mottaiUserId",
+        "fields": {
+          "mottaiUserId": {
+            "type": "String",
+            "autoDocumentId": true
+          },
+          "name": {
+            "type": "String"
+          },
+          "createdAt": {
+            "type": "Timestamp",
+            "nullable": true,
+            "undefinedable": true,
+            "typeInDart": "DateTime",
+            "typeInTS": "Date",
+            "autoNow": true
+          },
+          "updatedAt": {
+            "type": "Timestamp",
+            "nullable": true,
+            "undefinedable": true,
+            "typeInDart": "DateTime",
+            "typeInTS": "Date",
+            "autoNow": true
+          }
+        },
+        "collection": {
+          "fcm": {
+            // 後で考える
+          }
+        }
+      },
+      "hosts": {
+        "className": "Host",
+        "documentId": "hostId",
+        "fields": {
+          "hostId": {
+            "type": "String",
+            "autoDocumentId": true
+          },
+          "name": {
+            "type": "String"
+          },
+          "createdAt": {
+            "type": "Timestamp",
+            "nullable": true,
+            "undefinedable": true,
+            "typeInDart": "DateTime",
+            "typeInTS": "Date",
+            "autoNow": true
+          },
+          "updatedAt": {
+            "type": "Timestamp",
+            "nullable": true,
+            "undefinedable": true,
+            "typeInDart": "DateTime",
+            "typeInTS": "Date",
+            "autoNow": true
+          }
+        }
+      }
+    }
+  }
+}
