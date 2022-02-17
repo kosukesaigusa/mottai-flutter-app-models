@@ -1,4 +1,12 @@
 {
+  "output": {
+    "dartModelsDir": "./path/to/dartModelsDir",
+    "dartRefsDir": "./path/to/dartRefsDir",
+    "dartRepositoryDir": "./path/to/dartRepositoryDir",
+    "tsTypesDir": "./path/to/tsTypesDir",
+    "tsRefsDir": "./path/to/tsRefsDir",
+    "tsRepositoryDir": "./path/to/tsRepositoryDir"
+  },
   "Firestore": {
     "collection": {
       "mottaiUsers": {
