@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:npo_mottai_matching_app_models/converter/json_converter.dart';
+import 'package:mottai_flutter_app_models/converter/json_converter.dart';
 
 part 'app_user.g.dart';
 

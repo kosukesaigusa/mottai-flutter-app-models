@@ -1,4 +1,4 @@
-library npo_mottai_matching_app_models;
+library mottai_flutter_app_models;
 
 /// A Calculator.
 class Calculator {
