@@ -1,5 +1,0 @@
-collections:
-  - class: MottaiUser
-    name: mottaiUsers
-    data:
-      - field:
