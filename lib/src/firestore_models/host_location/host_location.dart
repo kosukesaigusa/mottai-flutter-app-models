@@ -2,8 +2,31 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ks_flutter_commons/ks_flutter_commons.dart';
 
+import '../../../models.dart';
+
 part 'host_location.freezed.dart';
 part 'host_location.g.dart';
+
+class PositionConverter implements JsonConverter<Position, Map<String, dynamic>> {
+  const PositionConverter();
+
+  @override
+  Position fromJson(Map<String, dynamic> positionMap) {
+    final geohash = (positionMap['geohash'] ?? '') as String;
+    final geopoint = positionMap['geopoint'] as GeoPoint;
+    return Position(geohash: geohash, geopoint: geopoint);
+  }
+
+  @override
+  Map<String, dynamic> toJson(Position position) {
+    final geohash = position.geohash;
+    final geopoint = position.geopoint;
+    return <String, dynamic>{
+      'geohash': geohash,
+      'geopoint': geopoint,
+    };
+  }
+}
 
 @freezed
 class HostLocation with _$HostLocation {
@@ -16,7 +39,7 @@ class HostLocation with _$HostLocation {
     required String address,
     required String description,
     required String imageURL,
-    @GeoPointConverter() required GeoPoint geoPoint,
+    @PositionConverter() required Position position,
   }) = _HostLocation;
 
   factory HostLocation.fromJson(Map<String, dynamic> json) => _$HostLocationFromJson(json);

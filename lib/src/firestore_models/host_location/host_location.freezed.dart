@@ -31,7 +31,7 @@ class _$HostLocationTearOff {
       required String address,
       required String description,
       required String imageURL,
-      @GeoPointConverter() required GeoPoint geoPoint}) {
+      @PositionConverter() required Position position}) {
     return _HostLocation(
       hostLocationId: hostLocationId,
       createdAt: createdAt,
@@ -41,7 +41,7 @@ class _$HostLocationTearOff {
       address: address,
       description: description,
       imageURL: imageURL,
-      geoPoint: geoPoint,
+      position: position,
     );
   }
 
@@ -65,8 +65,8 @@ mixin _$HostLocation {
   String get address => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get imageURL => throw _privateConstructorUsedError;
-  @GeoPointConverter()
-  GeoPoint get geoPoint => throw _privateConstructorUsedError;
+  @PositionConverter()
+  Position get position => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -88,7 +88,9 @@ abstract class $HostLocationCopyWith<$Res> {
       String address,
       String description,
       String imageURL,
-      @GeoPointConverter() GeoPoint geoPoint});
+      @PositionConverter() Position position});
+
+  $PositionCopyWith<$Res> get position;
 }
 
 /// @nodoc
@@ -109,7 +111,7 @@ class _$HostLocationCopyWithImpl<$Res> implements $HostLocationCopyWith<$Res> {
     Object? address = freezed,
     Object? description = freezed,
     Object? imageURL = freezed,
-    Object? geoPoint = freezed,
+    Object? position = freezed,
   }) {
     return _then(_value.copyWith(
       hostLocationId: hostLocationId == freezed
@@ -144,11 +146,18 @@ class _$HostLocationCopyWithImpl<$Res> implements $HostLocationCopyWith<$Res> {
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      geoPoint: geoPoint == freezed
-          ? _value.geoPoint
-          : geoPoint // ignore: cast_nullable_to_non_nullable
-              as GeoPoint,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Position,
     ));
+  }
+
+  @override
+  $PositionCopyWith<$Res> get position {
+    return $PositionCopyWith<$Res>(_value.position, (value) {
+      return _then(_value.copyWith(position: value));
+    });
   }
 }
 
@@ -168,7 +177,10 @@ abstract class _$HostLocationCopyWith<$Res>
       String address,
       String description,
       String imageURL,
-      @GeoPointConverter() GeoPoint geoPoint});
+      @PositionConverter() Position position});
+
+  @override
+  $PositionCopyWith<$Res> get position;
 }
 
 /// @nodoc
@@ -191,7 +203,7 @@ class __$HostLocationCopyWithImpl<$Res> extends _$HostLocationCopyWithImpl<$Res>
     Object? address = freezed,
     Object? description = freezed,
     Object? imageURL = freezed,
-    Object? geoPoint = freezed,
+    Object? position = freezed,
   }) {
     return _then(_HostLocation(
       hostLocationId: hostLocationId == freezed
@@ -226,10 +238,10 @@ class __$HostLocationCopyWithImpl<$Res> extends _$HostLocationCopyWithImpl<$Res>
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      geoPoint: geoPoint == freezed
-          ? _value.geoPoint
-          : geoPoint // ignore: cast_nullable_to_non_nullable
-              as GeoPoint,
+      position: position == freezed
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Position,
     ));
   }
 }
@@ -246,7 +258,7 @@ class _$_HostLocation implements _HostLocation {
       required this.address,
       required this.description,
       required this.imageURL,
-      @GeoPointConverter() required this.geoPoint});
+      @PositionConverter() required this.position});
 
   factory _$_HostLocation.fromJson(Map<String, dynamic> json) =>
       _$$_HostLocationFromJson(json);
@@ -270,12 +282,12 @@ class _$_HostLocation implements _HostLocation {
   @override
   final String imageURL;
   @override
-  @GeoPointConverter()
-  final GeoPoint geoPoint;
+  @PositionConverter()
+  final Position position;
 
   @override
   String toString() {
-    return 'HostLocation(hostLocationId: $hostLocationId, createdAt: $createdAt, updatedAt: $updatedAt, title: $title, hostId: $hostId, address: $address, description: $description, imageURL: $imageURL, geoPoint: $geoPoint)';
+    return 'HostLocation(hostLocationId: $hostLocationId, createdAt: $createdAt, updatedAt: $updatedAt, title: $title, hostId: $hostId, address: $address, description: $description, imageURL: $imageURL, position: $position)';
   }
 
   @override
@@ -293,7 +305,7 @@ class _$_HostLocation implements _HostLocation {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
-            const DeepCollectionEquality().equals(other.geoPoint, geoPoint));
+            const DeepCollectionEquality().equals(other.position, position));
   }
 
   @override
@@ -307,7 +319,7 @@ class _$_HostLocation implements _HostLocation {
       const DeepCollectionEquality().hash(address),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(imageURL),
-      const DeepCollectionEquality().hash(geoPoint));
+      const DeepCollectionEquality().hash(position));
 
   @JsonKey(ignore: true)
   @override
@@ -330,7 +342,7 @@ abstract class _HostLocation implements HostLocation {
       required String address,
       required String description,
       required String imageURL,
-      @GeoPointConverter() required GeoPoint geoPoint}) = _$_HostLocation;
+      @PositionConverter() required Position position}) = _$_HostLocation;
 
   factory _HostLocation.fromJson(Map<String, dynamic> json) =
       _$_HostLocation.fromJson;
@@ -354,8 +366,8 @@ abstract class _HostLocation implements HostLocation {
   @override
   String get imageURL;
   @override
-  @GeoPointConverter()
-  GeoPoint get geoPoint;
+  @PositionConverter()
+  Position get position;
   @override
   @JsonKey(ignore: true)
   _$HostLocationCopyWith<_HostLocation> get copyWith =>
