@@ -1,1 +1,1 @@
-export './position/position.dart';
+export 'firestore_position/firestore_position.dart';

@@ -31,7 +31,7 @@ class _$HostLocationTearOff {
       required String address,
       required String description,
       required String imageURL,
-      @PositionConverter() required Position position}) {
+      @FirestorePositionConverter() required FirestorePosition position}) {
     return _HostLocation(
       hostLocationId: hostLocationId,
       createdAt: createdAt,
@@ -65,8 +65,8 @@ mixin _$HostLocation {
   String get address => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get imageURL => throw _privateConstructorUsedError;
-  @PositionConverter()
-  Position get position => throw _privateConstructorUsedError;
+  @FirestorePositionConverter()
+  FirestorePosition get position => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -88,9 +88,9 @@ abstract class $HostLocationCopyWith<$Res> {
       String address,
       String description,
       String imageURL,
-      @PositionConverter() Position position});
+      @FirestorePositionConverter() FirestorePosition position});
 
-  $PositionCopyWith<$Res> get position;
+  $FirestorePositionCopyWith<$Res> get position;
 }
 
 /// @nodoc
@@ -149,13 +149,13 @@ class _$HostLocationCopyWithImpl<$Res> implements $HostLocationCopyWith<$Res> {
       position: position == freezed
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
-              as Position,
+              as FirestorePosition,
     ));
   }
 
   @override
-  $PositionCopyWith<$Res> get position {
-    return $PositionCopyWith<$Res>(_value.position, (value) {
+  $FirestorePositionCopyWith<$Res> get position {
+    return $FirestorePositionCopyWith<$Res>(_value.position, (value) {
       return _then(_value.copyWith(position: value));
     });
   }
@@ -177,10 +177,10 @@ abstract class _$HostLocationCopyWith<$Res>
       String address,
       String description,
       String imageURL,
-      @PositionConverter() Position position});
+      @FirestorePositionConverter() FirestorePosition position});
 
   @override
-  $PositionCopyWith<$Res> get position;
+  $FirestorePositionCopyWith<$Res> get position;
 }
 
 /// @nodoc
@@ -241,7 +241,7 @@ class __$HostLocationCopyWithImpl<$Res> extends _$HostLocationCopyWithImpl<$Res>
       position: position == freezed
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
-              as Position,
+              as FirestorePosition,
     ));
   }
 }
@@ -258,7 +258,7 @@ class _$_HostLocation implements _HostLocation {
       required this.address,
       required this.description,
       required this.imageURL,
-      @PositionConverter() required this.position});
+      @FirestorePositionConverter() required this.position});
 
   factory _$_HostLocation.fromJson(Map<String, dynamic> json) =>
       _$$_HostLocationFromJson(json);
@@ -282,8 +282,8 @@ class _$_HostLocation implements _HostLocation {
   @override
   final String imageURL;
   @override
-  @PositionConverter()
-  final Position position;
+  @FirestorePositionConverter()
+  final FirestorePosition position;
 
   @override
   String toString() {
@@ -334,15 +334,16 @@ class _$_HostLocation implements _HostLocation {
 
 abstract class _HostLocation implements HostLocation {
   const factory _HostLocation(
-      {required String hostLocationId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      required String title,
-      required String hostId,
-      required String address,
-      required String description,
-      required String imageURL,
-      @PositionConverter() required Position position}) = _$_HostLocation;
+          {required String hostLocationId,
+          @AutoTimestampConverter() DateTime? createdAt,
+          @AutoTimestampConverter() DateTime? updatedAt,
+          required String title,
+          required String hostId,
+          required String address,
+          required String description,
+          required String imageURL,
+          @FirestorePositionConverter() required FirestorePosition position}) =
+      _$_HostLocation;
 
   factory _HostLocation.fromJson(Map<String, dynamic> json) =
       _$_HostLocation.fromJson;
@@ -366,8 +367,8 @@ abstract class _HostLocation implements HostLocation {
   @override
   String get imageURL;
   @override
-  @PositionConverter()
-  Position get position;
+  @FirestorePositionConverter()
+  FirestorePosition get position;
   @override
   @JsonKey(ignore: true)
   _$HostLocationCopyWith<_HostLocation> get copyWith =>

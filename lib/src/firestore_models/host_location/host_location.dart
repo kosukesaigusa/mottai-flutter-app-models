@@ -7,18 +7,18 @@ import '../../../models.dart';
 part 'host_location.freezed.dart';
 part 'host_location.g.dart';
 
-class PositionConverter implements JsonConverter<Position, Map<String, dynamic>> {
-  const PositionConverter();
+class FirestorePositionConverter implements JsonConverter<FirestorePosition, Map<String, dynamic>> {
+  const FirestorePositionConverter();
 
   @override
-  Position fromJson(Map<String, dynamic> positionMap) {
+  FirestorePosition fromJson(Map<String, dynamic> positionMap) {
     final geohash = (positionMap['geohash'] ?? '') as String;
     final geopoint = positionMap['geopoint'] as GeoPoint;
-    return Position(geohash: geohash, geopoint: geopoint);
+    return FirestorePosition(geohash: geohash, geopoint: geopoint);
   }
 
   @override
-  Map<String, dynamic> toJson(Position position) {
+  Map<String, dynamic> toJson(FirestorePosition position) {
     final geohash = position.geohash;
     final geopoint = position.geopoint;
     return <String, dynamic>{
@@ -39,7 +39,7 @@ class HostLocation with _$HostLocation {
     required String address,
     required String description,
     required String imageURL,
-    @PositionConverter() required Position position,
+    @FirestorePositionConverter() required FirestorePosition position,
   }) = _HostLocation;
 
   factory HostLocation.fromJson(Map<String, dynamic> json) => _$HostLocationFromJson(json);
