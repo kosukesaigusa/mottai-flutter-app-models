@@ -19,6 +19,7 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation: ^1.1.0
+  hooks_riverpod: ^1.0.3
   json_annotation: ^4.4.0
   ks_flutter_commons:
     path: ../ks_flutter_commons
