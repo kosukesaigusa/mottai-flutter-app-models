@@ -26,15 +26,15 @@ class _$AccountTearOff {
       {required String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
-      required String displayName,
-      String? photoUrl,
+      String? displayName,
+      String? imageURL,
       List<String> providers = const []}) {
     return _Account(
       accountId: accountId,
       createdAt: createdAt,
       updatedAt: updatedAt,
       displayName: displayName,
-      photoUrl: photoUrl,
+      imageURL: imageURL,
       providers: providers,
     );
   }
@@ -54,8 +54,8 @@ mixin _$Account {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
-  String get displayName => throw _privateConstructorUsedError;
-  String? get photoUrl => throw _privateConstructorUsedError;
+  String? get displayName => throw _privateConstructorUsedError;
+  String? get imageURL => throw _privateConstructorUsedError;
   List<String> get providers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -71,8 +71,8 @@ abstract class $AccountCopyWith<$Res> {
       {String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
-      String displayName,
-      String? photoUrl,
+      String? displayName,
+      String? imageURL,
       List<String> providers});
 }
 
@@ -90,7 +90,7 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? displayName = freezed,
-    Object? photoUrl = freezed,
+    Object? imageURL = freezed,
     Object? providers = freezed,
   }) {
     return _then(_value.copyWith(
@@ -109,10 +109,10 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoUrl: photoUrl == freezed
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageURL: imageURL == freezed
+          ? _value.imageURL
+          : imageURL // ignore: cast_nullable_to_non_nullable
               as String?,
       providers: providers == freezed
           ? _value.providers
@@ -131,8 +131,8 @@ abstract class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       {String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
-      String displayName,
-      String? photoUrl,
+      String? displayName,
+      String? imageURL,
       List<String> providers});
 }
 
@@ -151,7 +151,7 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? displayName = freezed,
-    Object? photoUrl = freezed,
+    Object? imageURL = freezed,
     Object? providers = freezed,
   }) {
     return _then(_Account(
@@ -170,10 +170,10 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoUrl: photoUrl == freezed
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageURL: imageURL == freezed
+          ? _value.imageURL
+          : imageURL // ignore: cast_nullable_to_non_nullable
               as String?,
       providers: providers == freezed
           ? _value.providers
@@ -190,8 +190,8 @@ class _$_Account implements _Account {
       {required this.accountId,
       @AutoTimestampConverter() this.createdAt,
       @AutoTimestampConverter() this.updatedAt,
-      required this.displayName,
-      this.photoUrl,
+      this.displayName,
+      this.imageURL,
       this.providers = const []});
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
@@ -206,16 +206,16 @@ class _$_Account implements _Account {
   @AutoTimestampConverter()
   final DateTime? updatedAt;
   @override
-  final String displayName;
+  final String? displayName;
   @override
-  final String? photoUrl;
+  final String? imageURL;
   @JsonKey()
   @override
   final List<String> providers;
 
   @override
   String toString() {
-    return 'Account(accountId: $accountId, createdAt: $createdAt, updatedAt: $updatedAt, displayName: $displayName, photoUrl: $photoUrl, providers: $providers)';
+    return 'Account(accountId: $accountId, createdAt: $createdAt, updatedAt: $updatedAt, displayName: $displayName, imageURL: $imageURL, providers: $providers)';
   }
 
   @override
@@ -228,7 +228,7 @@ class _$_Account implements _Account {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
-            const DeepCollectionEquality().equals(other.photoUrl, photoUrl) &&
+            const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
             const DeepCollectionEquality().equals(other.providers, providers));
   }
 
@@ -239,7 +239,7 @@ class _$_Account implements _Account {
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(displayName),
-      const DeepCollectionEquality().hash(photoUrl),
+      const DeepCollectionEquality().hash(imageURL),
       const DeepCollectionEquality().hash(providers));
 
   @JsonKey(ignore: true)
@@ -258,8 +258,8 @@ abstract class _Account implements Account {
       {required String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
-      required String displayName,
-      String? photoUrl,
+      String? displayName,
+      String? imageURL,
       List<String> providers}) = _$_Account;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
@@ -273,9 +273,9 @@ abstract class _Account implements Account {
   @AutoTimestampConverter()
   DateTime? get updatedAt;
   @override
-  String get displayName;
+  String? get displayName;
   @override
-  String? get photoUrl;
+  String? get imageURL;
   @override
   List<String> get providers;
   @override

@@ -11,8 +11,8 @@ class Account with _$Account {
     required String accountId,
     @AutoTimestampConverter() DateTime? createdAt,
     @AutoTimestampConverter() DateTime? updatedAt,
-    required String displayName,
-    String? photoUrl,
+    String? displayName,
+    String? imageURL,
     @Default([]) List<String> providers,
   }) = _Account;
 
