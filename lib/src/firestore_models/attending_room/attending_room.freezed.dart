@@ -26,7 +26,6 @@ class _$AttendingRoomTearOff {
       {required String roomId,
       required String hostId,
       required String workerId,
-      required String roomName,
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount = 0,
       bool muteNotification = false,
@@ -35,7 +34,6 @@ class _$AttendingRoomTearOff {
       roomId: roomId,
       hostId: hostId,
       workerId: workerId,
-      roomName: roomName,
       updatedAt: updatedAt,
       unreadCount: unreadCount,
       muteNotification: muteNotification,
@@ -56,7 +54,6 @@ mixin _$AttendingRoom {
   String get roomId => throw _privateConstructorUsedError;
   String get hostId => throw _privateConstructorUsedError;
   String get workerId => throw _privateConstructorUsedError;
-  String get roomName => throw _privateConstructorUsedError;
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   int get unreadCount => throw _privateConstructorUsedError;
@@ -78,7 +75,6 @@ abstract class $AttendingRoomCopyWith<$Res> {
       {String roomId,
       String hostId,
       String workerId,
-      String roomName,
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount,
       bool muteNotification,
@@ -99,7 +95,6 @@ class _$AttendingRoomCopyWithImpl<$Res>
     Object? roomId = freezed,
     Object? hostId = freezed,
     Object? workerId = freezed,
-    Object? roomName = freezed,
     Object? updatedAt = freezed,
     Object? unreadCount = freezed,
     Object? muteNotification = freezed,
@@ -117,10 +112,6 @@ class _$AttendingRoomCopyWithImpl<$Res>
       workerId: workerId == freezed
           ? _value.workerId
           : workerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      roomName: roomName == freezed
-          ? _value.roomName
-          : roomName // ignore: cast_nullable_to_non_nullable
               as String,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
@@ -153,7 +144,6 @@ abstract class _$AttendingRoomCopyWith<$Res>
       {String roomId,
       String hostId,
       String workerId,
-      String roomName,
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount,
       bool muteNotification,
@@ -176,7 +166,6 @@ class __$AttendingRoomCopyWithImpl<$Res>
     Object? roomId = freezed,
     Object? hostId = freezed,
     Object? workerId = freezed,
-    Object? roomName = freezed,
     Object? updatedAt = freezed,
     Object? unreadCount = freezed,
     Object? muteNotification = freezed,
@@ -194,10 +183,6 @@ class __$AttendingRoomCopyWithImpl<$Res>
       workerId: workerId == freezed
           ? _value.workerId
           : workerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      roomName: roomName == freezed
-          ? _value.roomName
-          : roomName // ignore: cast_nullable_to_non_nullable
               as String,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
@@ -226,7 +211,6 @@ class _$_AttendingRoom implements _AttendingRoom {
       {required this.roomId,
       required this.hostId,
       required this.workerId,
-      required this.roomName,
       @AutoTimestampConverter() this.updatedAt,
       this.unreadCount = 0,
       this.muteNotification = false,
@@ -242,8 +226,6 @@ class _$_AttendingRoom implements _AttendingRoom {
   @override
   final String workerId;
   @override
-  final String roomName;
-  @override
   @AutoTimestampConverter()
   final DateTime? updatedAt;
   @JsonKey()
@@ -257,7 +239,7 @@ class _$_AttendingRoom implements _AttendingRoom {
 
   @override
   String toString() {
-    return 'AttendingRoom(roomId: $roomId, hostId: $hostId, workerId: $workerId, roomName: $roomName, updatedAt: $updatedAt, unreadCount: $unreadCount, muteNotification: $muteNotification, lastReadMessageId: $lastReadMessageId)';
+    return 'AttendingRoom(roomId: $roomId, hostId: $hostId, workerId: $workerId, updatedAt: $updatedAt, unreadCount: $unreadCount, muteNotification: $muteNotification, lastReadMessageId: $lastReadMessageId)';
   }
 
   @override
@@ -268,7 +250,6 @@ class _$_AttendingRoom implements _AttendingRoom {
             const DeepCollectionEquality().equals(other.roomId, roomId) &&
             const DeepCollectionEquality().equals(other.hostId, hostId) &&
             const DeepCollectionEquality().equals(other.workerId, workerId) &&
-            const DeepCollectionEquality().equals(other.roomName, roomName) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality()
                 .equals(other.unreadCount, unreadCount) &&
@@ -284,7 +265,6 @@ class _$_AttendingRoom implements _AttendingRoom {
       const DeepCollectionEquality().hash(roomId),
       const DeepCollectionEquality().hash(hostId),
       const DeepCollectionEquality().hash(workerId),
-      const DeepCollectionEquality().hash(roomName),
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(unreadCount),
       const DeepCollectionEquality().hash(muteNotification),
@@ -306,7 +286,6 @@ abstract class _AttendingRoom implements AttendingRoom {
       {required String roomId,
       required String hostId,
       required String workerId,
-      required String roomName,
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount,
       bool muteNotification,
@@ -321,8 +300,6 @@ abstract class _AttendingRoom implements AttendingRoom {
   String get hostId;
   @override
   String get workerId;
-  @override
-  String get roomName;
   @override
   @AutoTimestampConverter()
   DateTime? get updatedAt;

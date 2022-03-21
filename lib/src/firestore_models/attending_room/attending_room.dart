@@ -11,7 +11,6 @@ class AttendingRoom with _$AttendingRoom {
     required String roomId,
     required String hostId,
     required String workerId,
-    required String roomName,
     @AutoTimestampConverter() DateTime? updatedAt,
     @Default(0) int unreadCount,
     @Default(false) bool muteNotification,

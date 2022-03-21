@@ -26,11 +26,13 @@ class _$RoomTearOff {
       {required String roomId,
       required String hostId,
       required String workerId,
+      String? imageURL,
       @AutoTimestampConverter() DateTime? updatedAt}) {
     return _Room(
       roomId: roomId,
       hostId: hostId,
       workerId: workerId,
+      imageURL: imageURL,
       updatedAt: updatedAt,
     );
   }
@@ -48,6 +50,7 @@ mixin _$Room {
   String get roomId => throw _privateConstructorUsedError;
   String get hostId => throw _privateConstructorUsedError;
   String get workerId => throw _privateConstructorUsedError;
+  String? get imageURL => throw _privateConstructorUsedError;
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -64,6 +67,7 @@ abstract class $RoomCopyWith<$Res> {
       {String roomId,
       String hostId,
       String workerId,
+      String? imageURL,
       @AutoTimestampConverter() DateTime? updatedAt});
 }
 
@@ -80,6 +84,7 @@ class _$RoomCopyWithImpl<$Res> implements $RoomCopyWith<$Res> {
     Object? roomId = freezed,
     Object? hostId = freezed,
     Object? workerId = freezed,
+    Object? imageURL = freezed,
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -95,6 +100,10 @@ class _$RoomCopyWithImpl<$Res> implements $RoomCopyWith<$Res> {
           ? _value.workerId
           : workerId // ignore: cast_nullable_to_non_nullable
               as String,
+      imageURL: imageURL == freezed
+          ? _value.imageURL
+          : imageURL // ignore: cast_nullable_to_non_nullable
+              as String?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -112,6 +121,7 @@ abstract class _$RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
       {String roomId,
       String hostId,
       String workerId,
+      String? imageURL,
       @AutoTimestampConverter() DateTime? updatedAt});
 }
 
@@ -129,6 +139,7 @@ class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
     Object? roomId = freezed,
     Object? hostId = freezed,
     Object? workerId = freezed,
+    Object? imageURL = freezed,
     Object? updatedAt = freezed,
   }) {
     return _then(_Room(
@@ -144,6 +155,10 @@ class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
           ? _value.workerId
           : workerId // ignore: cast_nullable_to_non_nullable
               as String,
+      imageURL: imageURL == freezed
+          ? _value.imageURL
+          : imageURL // ignore: cast_nullable_to_non_nullable
+              as String?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -159,6 +174,7 @@ class _$_Room implements _Room {
       {required this.roomId,
       required this.hostId,
       required this.workerId,
+      this.imageURL,
       @AutoTimestampConverter() this.updatedAt});
 
   factory _$_Room.fromJson(Map<String, dynamic> json) => _$$_RoomFromJson(json);
@@ -170,12 +186,14 @@ class _$_Room implements _Room {
   @override
   final String workerId;
   @override
+  final String? imageURL;
+  @override
   @AutoTimestampConverter()
   final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'Room(roomId: $roomId, hostId: $hostId, workerId: $workerId, updatedAt: $updatedAt)';
+    return 'Room(roomId: $roomId, hostId: $hostId, workerId: $workerId, imageURL: $imageURL, updatedAt: $updatedAt)';
   }
 
   @override
@@ -186,6 +204,7 @@ class _$_Room implements _Room {
             const DeepCollectionEquality().equals(other.roomId, roomId) &&
             const DeepCollectionEquality().equals(other.hostId, hostId) &&
             const DeepCollectionEquality().equals(other.workerId, workerId) &&
+            const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
@@ -195,6 +214,7 @@ class _$_Room implements _Room {
       const DeepCollectionEquality().hash(roomId),
       const DeepCollectionEquality().hash(hostId),
       const DeepCollectionEquality().hash(workerId),
+      const DeepCollectionEquality().hash(imageURL),
       const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
@@ -213,6 +233,7 @@ abstract class _Room implements Room {
       {required String roomId,
       required String hostId,
       required String workerId,
+      String? imageURL,
       @AutoTimestampConverter() DateTime? updatedAt}) = _$_Room;
 
   factory _Room.fromJson(Map<String, dynamic> json) = _$_Room.fromJson;
@@ -223,6 +244,8 @@ abstract class _Room implements Room {
   String get hostId;
   @override
   String get workerId;
+  @override
+  String? get imageURL;
   @override
   @AutoTimestampConverter()
   DateTime? get updatedAt;
