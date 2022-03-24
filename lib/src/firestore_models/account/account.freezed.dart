@@ -26,6 +26,7 @@ class _$AccountTearOff {
       {required String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
+      bool isHost = false,
       String? displayName,
       String? imageURL,
       List<String> providers = const []}) {
@@ -33,6 +34,7 @@ class _$AccountTearOff {
       accountId: accountId,
       createdAt: createdAt,
       updatedAt: updatedAt,
+      isHost: isHost,
       displayName: displayName,
       imageURL: imageURL,
       providers: providers,
@@ -54,6 +56,7 @@ mixin _$Account {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  bool get isHost => throw _privateConstructorUsedError;
   String? get displayName => throw _privateConstructorUsedError;
   String? get imageURL => throw _privateConstructorUsedError;
   List<String> get providers => throw _privateConstructorUsedError;
@@ -71,6 +74,7 @@ abstract class $AccountCopyWith<$Res> {
       {String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
+      bool isHost,
       String? displayName,
       String? imageURL,
       List<String> providers});
@@ -89,6 +93,7 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
     Object? accountId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? isHost = freezed,
     Object? displayName = freezed,
     Object? imageURL = freezed,
     Object? providers = freezed,
@@ -106,6 +111,10 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isHost: isHost == freezed
+          ? _value.isHost
+          : isHost // ignore: cast_nullable_to_non_nullable
+              as bool,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -131,6 +140,7 @@ abstract class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       {String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
+      bool isHost,
       String? displayName,
       String? imageURL,
       List<String> providers});
@@ -150,6 +160,7 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
     Object? accountId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? isHost = freezed,
     Object? displayName = freezed,
     Object? imageURL = freezed,
     Object? providers = freezed,
@@ -167,6 +178,10 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      isHost: isHost == freezed
+          ? _value.isHost
+          : isHost // ignore: cast_nullable_to_non_nullable
+              as bool,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -190,6 +205,7 @@ class _$_Account implements _Account {
       {required this.accountId,
       @AutoTimestampConverter() this.createdAt,
       @AutoTimestampConverter() this.updatedAt,
+      this.isHost = false,
       this.displayName,
       this.imageURL,
       this.providers = const []});
@@ -205,6 +221,9 @@ class _$_Account implements _Account {
   @override
   @AutoTimestampConverter()
   final DateTime? updatedAt;
+  @JsonKey()
+  @override
+  final bool isHost;
   @override
   final String? displayName;
   @override
@@ -215,7 +234,7 @@ class _$_Account implements _Account {
 
   @override
   String toString() {
-    return 'Account(accountId: $accountId, createdAt: $createdAt, updatedAt: $updatedAt, displayName: $displayName, imageURL: $imageURL, providers: $providers)';
+    return 'Account(accountId: $accountId, createdAt: $createdAt, updatedAt: $updatedAt, isHost: $isHost, displayName: $displayName, imageURL: $imageURL, providers: $providers)';
   }
 
   @override
@@ -226,6 +245,7 @@ class _$_Account implements _Account {
             const DeepCollectionEquality().equals(other.accountId, accountId) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
+            const DeepCollectionEquality().equals(other.isHost, isHost) &&
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
@@ -238,6 +258,7 @@ class _$_Account implements _Account {
       const DeepCollectionEquality().hash(accountId),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt),
+      const DeepCollectionEquality().hash(isHost),
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(imageURL),
       const DeepCollectionEquality().hash(providers));
@@ -258,6 +279,7 @@ abstract class _Account implements Account {
       {required String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
+      bool isHost,
       String? displayName,
       String? imageURL,
       List<String> providers}) = _$_Account;
@@ -272,6 +294,8 @@ abstract class _Account implements Account {
   @override
   @AutoTimestampConverter()
   DateTime? get updatedAt;
+  @override
+  bool get isHost;
   @override
   String? get displayName;
   @override

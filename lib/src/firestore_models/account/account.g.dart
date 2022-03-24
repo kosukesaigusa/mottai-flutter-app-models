@@ -10,6 +10,7 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       accountId: json['accountId'] as String,
       createdAt: const AutoTimestampConverter().fromJson(json['createdAt']),
       updatedAt: const AutoTimestampConverter().fromJson(json['updatedAt']),
+      isHost: json['isHost'] as bool? ?? false,
       displayName: json['displayName'] as String?,
       imageURL: json['imageURL'] as String?,
       providers: (json['providers'] as List<dynamic>?)
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
       'accountId': instance.accountId,
       'createdAt': const AutoTimestampConverter().toJson(instance.createdAt),
       'updatedAt': const AutoTimestampConverter().toJson(instance.updatedAt),
+      'isHost': instance.isHost,
       'displayName': instance.displayName,
       'imageURL': instance.imageURL,
       'providers': instance.providers,
