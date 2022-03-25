@@ -9,8 +9,7 @@ part of 'attending_room.dart';
 _$_AttendingRoom _$$_AttendingRoomFromJson(Map<String, dynamic> json) =>
     _$_AttendingRoom(
       roomId: json['roomId'] as String,
-      hostId: json['hostId'] as String,
-      workerId: json['workerId'] as String,
+      partnerId: json['partnerId'] as String,
       updatedAt: const AutoTimestampConverter().fromJson(json['updatedAt']),
       unreadCount: json['unreadCount'] as int? ?? 0,
       muteNotification: json['muteNotification'] as bool? ?? false,
@@ -20,8 +19,7 @@ _$_AttendingRoom _$$_AttendingRoomFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_AttendingRoomToJson(_$_AttendingRoom instance) =>
     <String, dynamic>{
       'roomId': instance.roomId,
-      'hostId': instance.hostId,
-      'workerId': instance.workerId,
+      'partnerId': instance.partnerId,
       'updatedAt': const AutoTimestampConverter().toJson(instance.updatedAt),
       'unreadCount': instance.unreadCount,
       'muteNotification': instance.muteNotification,

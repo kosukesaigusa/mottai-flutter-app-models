@@ -9,8 +9,7 @@ part 'attending_room.g.dart';
 class AttendingRoom with _$AttendingRoom {
   const factory AttendingRoom({
     required String roomId,
-    required String hostId,
-    required String workerId,
+    required String partnerId,
     @AutoTimestampConverter() DateTime? updatedAt,
     @Default(0) int unreadCount,
     @Default(false) bool muteNotification,
@@ -22,7 +21,7 @@ class AttendingRoom with _$AttendingRoom {
   factory AttendingRoom.fromDocumentSnapshot(DocumentSnapshot ds) {
     final data = ds.data()! as Map<String, dynamic>;
     return AttendingRoom.fromJson(<String, dynamic>{
-      'attendingRoomId': ds.id,
+      'roomId': ds.id,
       ...data,
     });
   }
