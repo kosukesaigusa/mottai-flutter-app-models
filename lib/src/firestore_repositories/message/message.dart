@@ -10,6 +10,7 @@ class MessageRepository {
   static const domainDocumentName = 'v1Message';
   static const attendingRoomSubCollectionName = 'attendingRooms';
   static const roomSubCollectionName = 'rooms';
+  static const userSubCollectionName = 'users';
   static const messageSubCollectionName = 'messages';
 
   static final baseRef =
@@ -19,7 +20,7 @@ class MessageRepository {
     required String userId,
   }) =>
       baseRef
-          .collection('users')
+          .collection(userSubCollectionName)
           .doc(userId)
           .collection(attendingRoomSubCollectionName)
           .withConverter<AttendingRoom>(
