@@ -11,6 +11,7 @@ class Room with _$Room {
     required String roomId,
     required String hostId,
     required String workerId,
+    @Default({}) @AutoTimestampValueMapConverter() Map<String, DateTime?> lastReadAt,
     String? imageURL,
     @AutoTimestampConverter() DateTime? updatedAt,
   }) = _Room;

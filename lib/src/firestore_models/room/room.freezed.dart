@@ -26,12 +26,16 @@ class _$RoomTearOff {
       {required String roomId,
       required String hostId,
       required String workerId,
+      @AutoTimestampValueMapConverter()
+          Map<String, DateTime?> lastReadAt = const {},
       String? imageURL,
-      @AutoTimestampConverter() DateTime? updatedAt}) {
+      @AutoTimestampConverter()
+          DateTime? updatedAt}) {
     return _Room(
       roomId: roomId,
       hostId: hostId,
       workerId: workerId,
+      lastReadAt: lastReadAt,
       imageURL: imageURL,
       updatedAt: updatedAt,
     );
@@ -50,6 +54,8 @@ mixin _$Room {
   String get roomId => throw _privateConstructorUsedError;
   String get hostId => throw _privateConstructorUsedError;
   String get workerId => throw _privateConstructorUsedError;
+  @AutoTimestampValueMapConverter()
+  Map<String, DateTime?> get lastReadAt => throw _privateConstructorUsedError;
   String? get imageURL => throw _privateConstructorUsedError;
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
@@ -67,6 +73,7 @@ abstract class $RoomCopyWith<$Res> {
       {String roomId,
       String hostId,
       String workerId,
+      @AutoTimestampValueMapConverter() Map<String, DateTime?> lastReadAt,
       String? imageURL,
       @AutoTimestampConverter() DateTime? updatedAt});
 }
@@ -84,6 +91,7 @@ class _$RoomCopyWithImpl<$Res> implements $RoomCopyWith<$Res> {
     Object? roomId = freezed,
     Object? hostId = freezed,
     Object? workerId = freezed,
+    Object? lastReadAt = freezed,
     Object? imageURL = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -100,6 +108,10 @@ class _$RoomCopyWithImpl<$Res> implements $RoomCopyWith<$Res> {
           ? _value.workerId
           : workerId // ignore: cast_nullable_to_non_nullable
               as String,
+      lastReadAt: lastReadAt == freezed
+          ? _value.lastReadAt
+          : lastReadAt // ignore: cast_nullable_to_non_nullable
+              as Map<String, DateTime?>,
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
@@ -121,6 +133,7 @@ abstract class _$RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
       {String roomId,
       String hostId,
       String workerId,
+      @AutoTimestampValueMapConverter() Map<String, DateTime?> lastReadAt,
       String? imageURL,
       @AutoTimestampConverter() DateTime? updatedAt});
 }
@@ -139,6 +152,7 @@ class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
     Object? roomId = freezed,
     Object? hostId = freezed,
     Object? workerId = freezed,
+    Object? lastReadAt = freezed,
     Object? imageURL = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -155,6 +169,10 @@ class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
           ? _value.workerId
           : workerId // ignore: cast_nullable_to_non_nullable
               as String,
+      lastReadAt: lastReadAt == freezed
+          ? _value.lastReadAt
+          : lastReadAt // ignore: cast_nullable_to_non_nullable
+              as Map<String, DateTime?>,
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
@@ -174,6 +192,7 @@ class _$_Room implements _Room {
       {required this.roomId,
       required this.hostId,
       required this.workerId,
+      @AutoTimestampValueMapConverter() this.lastReadAt = const {},
       this.imageURL,
       @AutoTimestampConverter() this.updatedAt});
 
@@ -185,6 +204,10 @@ class _$_Room implements _Room {
   final String hostId;
   @override
   final String workerId;
+  @JsonKey()
+  @override
+  @AutoTimestampValueMapConverter()
+  final Map<String, DateTime?> lastReadAt;
   @override
   final String? imageURL;
   @override
@@ -193,7 +216,7 @@ class _$_Room implements _Room {
 
   @override
   String toString() {
-    return 'Room(roomId: $roomId, hostId: $hostId, workerId: $workerId, imageURL: $imageURL, updatedAt: $updatedAt)';
+    return 'Room(roomId: $roomId, hostId: $hostId, workerId: $workerId, lastReadAt: $lastReadAt, imageURL: $imageURL, updatedAt: $updatedAt)';
   }
 
   @override
@@ -204,6 +227,8 @@ class _$_Room implements _Room {
             const DeepCollectionEquality().equals(other.roomId, roomId) &&
             const DeepCollectionEquality().equals(other.hostId, hostId) &&
             const DeepCollectionEquality().equals(other.workerId, workerId) &&
+            const DeepCollectionEquality()
+                .equals(other.lastReadAt, lastReadAt) &&
             const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -214,6 +239,7 @@ class _$_Room implements _Room {
       const DeepCollectionEquality().hash(roomId),
       const DeepCollectionEquality().hash(hostId),
       const DeepCollectionEquality().hash(workerId),
+      const DeepCollectionEquality().hash(lastReadAt),
       const DeepCollectionEquality().hash(imageURL),
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -233,6 +259,7 @@ abstract class _Room implements Room {
       {required String roomId,
       required String hostId,
       required String workerId,
+      @AutoTimestampValueMapConverter() Map<String, DateTime?> lastReadAt,
       String? imageURL,
       @AutoTimestampConverter() DateTime? updatedAt}) = _$_Room;
 
@@ -244,6 +271,9 @@ abstract class _Room implements Room {
   String get hostId;
   @override
   String get workerId;
+  @override
+  @AutoTimestampValueMapConverter()
+  Map<String, DateTime?> get lastReadAt;
   @override
   String? get imageURL;
   @override
