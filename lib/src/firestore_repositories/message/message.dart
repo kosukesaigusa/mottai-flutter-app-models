@@ -12,6 +12,7 @@ class MessageRepository {
   static const roomSubCollectionName = 'rooms';
   static const userSubCollectionName = 'users';
   static const messageSubCollectionName = 'messages';
+  static const readStatusSubCollectionName = 'readStatus';
 
   static final baseRef =
       FirebaseFirestore.instance.collection(domainCollectionName).doc(domainDocumentName);
@@ -59,6 +60,23 @@ class MessageRepository {
   }) =>
       messagesRef(roomId: roomId).doc(messageId).withConverter<Message>(
             fromFirestore: (snapshot, _) => Message.fromDocumentSnapshot(snapshot),
+            toFirestore: (obj, _) => obj.toJson(),
+          );
+
+  static CollectionReference<ReadStatus> readStatusesRef({
+    required String roomId,
+  }) =>
+      roomRef(roomId: roomId).collection(readStatusSubCollectionName).withConverter<ReadStatus>(
+            fromFirestore: (snapshot, _) => ReadStatus.fromDocumentSnapshot(snapshot),
+            toFirestore: (obj, _) => obj.toJson(),
+          );
+
+  static DocumentReference<ReadStatus> readStatusRef({
+    required String roomId,
+    required String readStatusId,
+  }) =>
+      readStatusesRef(roomId: roomId).doc(readStatusId).withConverter<ReadStatus>(
+            fromFirestore: (snapshot, _) => ReadStatus.fromDocumentSnapshot(snapshot),
             toFirestore: (obj, _) => obj.toJson(),
           );
 
@@ -228,6 +246,64 @@ class MessageRepository {
     required String messageId,
   }) {
     final docStream = messageRef(roomId: roomId, messageId: messageId).snapshots();
+    return docStream.map((ds) => ds.data());
+  }
+
+  /// ReadStatus 一覧を取得する。
+  static Future<List<ReadStatus>> fetchReadStatuses({
+    required String roomId,
+    Source source = Source.serverAndCache,
+    Query<ReadStatus>? Function(Query<ReadStatus> query)? queryBuilder,
+    int Function(ReadStatus lhs, ReadStatus rhs)? compare,
+  }) async {
+    Query<ReadStatus> query = readStatusesRef(roomId: roomId);
+    if (queryBuilder != null) {
+      query = queryBuilder(query)!;
+    }
+    final qs = await query.get(GetOptions(source: source));
+    final result = qs.docs.map((qds) => qds.data()).toList();
+    if (compare != null) {
+      result.sort(compare);
+    }
+    return result;
+  }
+
+  /// ReadStatus 一覧を購読する。
+  static Stream<List<ReadStatus>> subscribeReadStatuses({
+    required String roomId,
+    Query<ReadStatus>? Function(Query<ReadStatus> query)? queryBuilder,
+    int Function(ReadStatus lhs, ReadStatus rhs)? compare,
+  }) {
+    Query<ReadStatus> query = readStatusesRef(roomId: roomId);
+    if (queryBuilder != null) {
+      query = queryBuilder(query)!;
+    }
+    return query.snapshots().map((qs) {
+      final result = qs.docs.map((qds) => qds.data()).toList();
+      if (compare != null) {
+        result.sort(compare);
+      }
+      return result;
+    });
+  }
+
+  /// 指定した ReadStatus を取得する。
+  static Future<ReadStatus?> fetchReadStatus({
+    required String roomId,
+    required String readStatusId,
+    Source source = Source.serverAndCache,
+  }) async {
+    final ds = await readStatusRef(roomId: roomId, readStatusId: readStatusId)
+        .get(GetOptions(source: source));
+    return ds.data();
+  }
+
+  /// 指定した ReadStatus を購読する。
+  static Stream<ReadStatus?> subscribeReadStatus({
+    required String roomId,
+    required String readStatusId,
+  }) {
+    final docStream = readStatusRef(roomId: roomId, readStatusId: readStatusId).snapshots();
     return docStream.map((ds) => ds.data());
   }
 }
