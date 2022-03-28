@@ -9,3 +9,6 @@ export './src/firestore_repositories/firestore_repositories.dart';
 
 /// models
 export './src/models/models.dart';
+
+/// playgrounds
+export './src/playgrounds/playgrounds.dart';

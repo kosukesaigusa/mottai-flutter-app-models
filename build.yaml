@@ -8,4 +8,5 @@ targets:
         generate_for:
           include:
             - lib/src/firestore_models/**/*.dart
+            - lib/src/playground_models/**/*.dart
             - lib/src/models/**/*.dart
