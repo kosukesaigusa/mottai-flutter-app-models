@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ks_flutter_commons/ks_flutter_commons.dart';
 
 import '../../../models.dart';
 
@@ -209,28 +208,6 @@ class MessageRepository {
       result.sort(compare);
     }
     return result;
-  }
-
-  ///
-  static Future<DataLastVisibleQdsAggregation<Message>> fetchMessagesWithLastVisibleQds({
-    required String roomId,
-    Source source = Source.serverAndCache,
-    Query<Message>? Function(Query<Message> query)? queryBuilder,
-    int Function(Message lhs, Message rhs)? compare,
-  }) async {
-    Query<Message> query = messagesRef(roomId: roomId);
-    if (queryBuilder != null) {
-      query = queryBuilder(query)!;
-    }
-    final qs = await query.get(GetOptions(source: source));
-    final result = qs.docs.map((qds) => qds.data()).toList();
-    if (compare != null) {
-      result.sort(compare);
-    }
-    return DataLastVisibleQdsAggregation(
-      data: result,
-      lastVisibleQds: qs.docs.isNotEmpty ? qs.docs.last : null,
-    );
   }
 
   /// Message 一覧を購読する。
