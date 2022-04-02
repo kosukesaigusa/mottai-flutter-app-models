@@ -28,7 +28,8 @@ class _$MessageTearOff {
       String type = 'plain',
       required String senderId,
       required String body,
-      dynamic imageURLs = const <String>[]}) {
+      dynamic imageURLs = const <String>[],
+      bool isDeleted = false}) {
     return _Message(
       messageId: messageId,
       createdAt: createdAt,
@@ -36,6 +37,7 @@ class _$MessageTearOff {
       senderId: senderId,
       body: body,
       imageURLs: imageURLs,
+      isDeleted: isDeleted,
     );
   }
 
@@ -56,6 +58,7 @@ mixin _$Message {
   String get senderId => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   dynamic get imageURLs => throw _privateConstructorUsedError;
+  bool get isDeleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +75,8 @@ abstract class $MessageCopyWith<$Res> {
       String type,
       String senderId,
       String body,
-      dynamic imageURLs});
+      dynamic imageURLs,
+      bool isDeleted});
 }
 
 /// @nodoc
@@ -91,6 +95,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? senderId = freezed,
     Object? body = freezed,
     Object? imageURLs = freezed,
+    Object? isDeleted = freezed,
   }) {
     return _then(_value.copyWith(
       messageId: messageId == freezed
@@ -117,6 +122,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.imageURLs
           : imageURLs // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      isDeleted: isDeleted == freezed
+          ? _value.isDeleted
+          : isDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -132,7 +141,8 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String type,
       String senderId,
       String body,
-      dynamic imageURLs});
+      dynamic imageURLs,
+      bool isDeleted});
 }
 
 /// @nodoc
@@ -152,6 +162,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? senderId = freezed,
     Object? body = freezed,
     Object? imageURLs = freezed,
+    Object? isDeleted = freezed,
   }) {
     return _then(_Message(
       messageId: messageId == freezed
@@ -175,6 +186,10 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           : body // ignore: cast_nullable_to_non_nullable
               as String,
       imageURLs: imageURLs == freezed ? _value.imageURLs : imageURLs,
+      isDeleted: isDeleted == freezed
+          ? _value.isDeleted
+          : isDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -188,7 +203,8 @@ class _$_Message implements _Message {
       this.type = 'plain',
       required this.senderId,
       required this.body,
-      this.imageURLs = const <String>[]});
+      this.imageURLs = const <String>[],
+      this.isDeleted = false});
 
   factory _$_Message.fromJson(Map<String, dynamic> json) =>
       _$$_MessageFromJson(json);
@@ -208,10 +224,13 @@ class _$_Message implements _Message {
   @JsonKey()
   @override
   final dynamic imageURLs;
+  @JsonKey()
+  @override
+  final bool isDeleted;
 
   @override
   String toString() {
-    return 'Message(messageId: $messageId, createdAt: $createdAt, type: $type, senderId: $senderId, body: $body, imageURLs: $imageURLs)';
+    return 'Message(messageId: $messageId, createdAt: $createdAt, type: $type, senderId: $senderId, body: $body, imageURLs: $imageURLs, isDeleted: $isDeleted)';
   }
 
   @override
@@ -224,7 +243,8 @@ class _$_Message implements _Message {
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.senderId, senderId) &&
             const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality().equals(other.imageURLs, imageURLs));
+            const DeepCollectionEquality().equals(other.imageURLs, imageURLs) &&
+            const DeepCollectionEquality().equals(other.isDeleted, isDeleted));
   }
 
   @override
@@ -235,7 +255,8 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(senderId),
       const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(imageURLs));
+      const DeepCollectionEquality().hash(imageURLs),
+      const DeepCollectionEquality().hash(isDeleted));
 
   @JsonKey(ignore: true)
   @override
@@ -255,7 +276,8 @@ abstract class _Message implements Message {
       String type,
       required String senderId,
       required String body,
-      dynamic imageURLs}) = _$_Message;
+      dynamic imageURLs,
+      bool isDeleted}) = _$_Message;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$_Message.fromJson;
 
@@ -272,6 +294,8 @@ abstract class _Message implements Message {
   String get body;
   @override
   dynamic get imageURLs;
+  @override
+  bool get isDeleted;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>

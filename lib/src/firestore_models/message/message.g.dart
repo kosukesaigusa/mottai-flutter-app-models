@@ -13,6 +13,7 @@ _$_Message _$$_MessageFromJson(Map<String, dynamic> json) => _$_Message(
       senderId: json['senderId'] as String,
       body: json['body'] as String,
       imageURLs: json['imageURLs'] ?? const <String>[],
+      isDeleted: json['isDeleted'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_MessageToJson(_$_Message instance) =>
@@ -23,4 +24,5 @@ Map<String, dynamic> _$$_MessageToJson(_$_Message instance) =>
       'senderId': instance.senderId,
       'body': instance.body,
       'imageURLs': instance.imageURLs,
+      'isDeleted': instance.isDeleted,
     };

@@ -13,6 +13,7 @@ class AttendingRoom with _$AttendingRoom {
     @AutoTimestampConverter() DateTime? updatedAt,
     @Default(0) int unreadCount,
     @Default(false) bool muteNotification,
+    @Default(false) bool isBlocked,
     String? lastReadMessageId,
   }) = _AttendingRoom;
 

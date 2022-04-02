@@ -14,7 +14,8 @@ class Account with _$Account {
     @Default(false) bool isHost,
     String? displayName,
     String? imageURL,
-    @Default([]) List<String> providers,
+    @Default(<String>[]) List<String> providers,
+    @Default(<String>[]) List<String> fcmTokens,
   }) = _Account;
 
   factory Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);

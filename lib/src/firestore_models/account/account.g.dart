@@ -16,7 +16,11 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       providers: (json['providers'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
-          const [],
+          const <String>[],
+      fcmTokens: (json['fcmTokens'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
     );
 
 Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
@@ -28,4 +32,5 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
       'displayName': instance.displayName,
       'imageURL': instance.imageURL,
       'providers': instance.providers,
+      'fcmTokens': instance.fcmTokens,
     };

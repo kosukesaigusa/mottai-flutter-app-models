@@ -28,6 +28,7 @@ class _$AttendingRoomTearOff {
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount = 0,
       bool muteNotification = false,
+      bool isBlocked = false,
       String? lastReadMessageId}) {
     return _AttendingRoom(
       roomId: roomId,
@@ -35,6 +36,7 @@ class _$AttendingRoomTearOff {
       updatedAt: updatedAt,
       unreadCount: unreadCount,
       muteNotification: muteNotification,
+      isBlocked: isBlocked,
       lastReadMessageId: lastReadMessageId,
     );
   }
@@ -55,6 +57,7 @@ mixin _$AttendingRoom {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   int get unreadCount => throw _privateConstructorUsedError;
   bool get muteNotification => throw _privateConstructorUsedError;
+  bool get isBlocked => throw _privateConstructorUsedError;
   String? get lastReadMessageId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -74,6 +77,7 @@ abstract class $AttendingRoomCopyWith<$Res> {
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount,
       bool muteNotification,
+      bool isBlocked,
       String? lastReadMessageId});
 }
 
@@ -93,6 +97,7 @@ class _$AttendingRoomCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? unreadCount = freezed,
     Object? muteNotification = freezed,
+    Object? isBlocked = freezed,
     Object? lastReadMessageId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -116,6 +121,10 @@ class _$AttendingRoomCopyWithImpl<$Res>
           ? _value.muteNotification
           : muteNotification // ignore: cast_nullable_to_non_nullable
               as bool,
+      isBlocked: isBlocked == freezed
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastReadMessageId: lastReadMessageId == freezed
           ? _value.lastReadMessageId
           : lastReadMessageId // ignore: cast_nullable_to_non_nullable
@@ -137,6 +146,7 @@ abstract class _$AttendingRoomCopyWith<$Res>
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount,
       bool muteNotification,
+      bool isBlocked,
       String? lastReadMessageId});
 }
 
@@ -158,6 +168,7 @@ class __$AttendingRoomCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? unreadCount = freezed,
     Object? muteNotification = freezed,
+    Object? isBlocked = freezed,
     Object? lastReadMessageId = freezed,
   }) {
     return _then(_AttendingRoom(
@@ -181,6 +192,10 @@ class __$AttendingRoomCopyWithImpl<$Res>
           ? _value.muteNotification
           : muteNotification // ignore: cast_nullable_to_non_nullable
               as bool,
+      isBlocked: isBlocked == freezed
+          ? _value.isBlocked
+          : isBlocked // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastReadMessageId: lastReadMessageId == freezed
           ? _value.lastReadMessageId
           : lastReadMessageId // ignore: cast_nullable_to_non_nullable
@@ -198,6 +213,7 @@ class _$_AttendingRoom implements _AttendingRoom {
       @AutoTimestampConverter() this.updatedAt,
       this.unreadCount = 0,
       this.muteNotification = false,
+      this.isBlocked = false,
       this.lastReadMessageId});
 
   factory _$_AttendingRoom.fromJson(Map<String, dynamic> json) =>
@@ -216,12 +232,15 @@ class _$_AttendingRoom implements _AttendingRoom {
   @JsonKey()
   @override
   final bool muteNotification;
+  @JsonKey()
+  @override
+  final bool isBlocked;
   @override
   final String? lastReadMessageId;
 
   @override
   String toString() {
-    return 'AttendingRoom(roomId: $roomId, partnerId: $partnerId, updatedAt: $updatedAt, unreadCount: $unreadCount, muteNotification: $muteNotification, lastReadMessageId: $lastReadMessageId)';
+    return 'AttendingRoom(roomId: $roomId, partnerId: $partnerId, updatedAt: $updatedAt, unreadCount: $unreadCount, muteNotification: $muteNotification, isBlocked: $isBlocked, lastReadMessageId: $lastReadMessageId)';
   }
 
   @override
@@ -236,6 +255,7 @@ class _$_AttendingRoom implements _AttendingRoom {
                 .equals(other.unreadCount, unreadCount) &&
             const DeepCollectionEquality()
                 .equals(other.muteNotification, muteNotification) &&
+            const DeepCollectionEquality().equals(other.isBlocked, isBlocked) &&
             const DeepCollectionEquality()
                 .equals(other.lastReadMessageId, lastReadMessageId));
   }
@@ -248,6 +268,7 @@ class _$_AttendingRoom implements _AttendingRoom {
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(unreadCount),
       const DeepCollectionEquality().hash(muteNotification),
+      const DeepCollectionEquality().hash(isBlocked),
       const DeepCollectionEquality().hash(lastReadMessageId));
 
   @JsonKey(ignore: true)
@@ -268,6 +289,7 @@ abstract class _AttendingRoom implements AttendingRoom {
       @AutoTimestampConverter() DateTime? updatedAt,
       int unreadCount,
       bool muteNotification,
+      bool isBlocked,
       String? lastReadMessageId}) = _$_AttendingRoom;
 
   factory _AttendingRoom.fromJson(Map<String, dynamic> json) =
@@ -284,6 +306,8 @@ abstract class _AttendingRoom implements AttendingRoom {
   int get unreadCount;
   @override
   bool get muteNotification;
+  @override
+  bool get isBlocked;
   @override
   String? get lastReadMessageId;
   @override

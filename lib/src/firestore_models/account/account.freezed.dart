@@ -29,7 +29,8 @@ class _$AccountTearOff {
       bool isHost = false,
       String? displayName,
       String? imageURL,
-      List<String> providers = const []}) {
+      List<String> providers = const <String>[],
+      List<String> fcmTokens = const <String>[]}) {
     return _Account(
       accountId: accountId,
       createdAt: createdAt,
@@ -38,6 +39,7 @@ class _$AccountTearOff {
       displayName: displayName,
       imageURL: imageURL,
       providers: providers,
+      fcmTokens: fcmTokens,
     );
   }
 
@@ -60,6 +62,7 @@ mixin _$Account {
   String? get displayName => throw _privateConstructorUsedError;
   String? get imageURL => throw _privateConstructorUsedError;
   List<String> get providers => throw _privateConstructorUsedError;
+  List<String> get fcmTokens => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -77,7 +80,8 @@ abstract class $AccountCopyWith<$Res> {
       bool isHost,
       String? displayName,
       String? imageURL,
-      List<String> providers});
+      List<String> providers,
+      List<String> fcmTokens});
 }
 
 /// @nodoc
@@ -97,6 +101,7 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
     Object? displayName = freezed,
     Object? imageURL = freezed,
     Object? providers = freezed,
+    Object? fcmTokens = freezed,
   }) {
     return _then(_value.copyWith(
       accountId: accountId == freezed
@@ -127,6 +132,10 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
           ? _value.providers
           : providers // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      fcmTokens: fcmTokens == freezed
+          ? _value.fcmTokens
+          : fcmTokens // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -143,7 +152,8 @@ abstract class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       bool isHost,
       String? displayName,
       String? imageURL,
-      List<String> providers});
+      List<String> providers,
+      List<String> fcmTokens});
 }
 
 /// @nodoc
@@ -164,6 +174,7 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
     Object? displayName = freezed,
     Object? imageURL = freezed,
     Object? providers = freezed,
+    Object? fcmTokens = freezed,
   }) {
     return _then(_Account(
       accountId: accountId == freezed
@@ -194,6 +205,10 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
           ? _value.providers
           : providers // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      fcmTokens: fcmTokens == freezed
+          ? _value.fcmTokens
+          : fcmTokens // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -208,7 +223,8 @@ class _$_Account implements _Account {
       this.isHost = false,
       this.displayName,
       this.imageURL,
-      this.providers = const []});
+      this.providers = const <String>[],
+      this.fcmTokens = const <String>[]});
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
       _$$_AccountFromJson(json);
@@ -231,10 +247,13 @@ class _$_Account implements _Account {
   @JsonKey()
   @override
   final List<String> providers;
+  @JsonKey()
+  @override
+  final List<String> fcmTokens;
 
   @override
   String toString() {
-    return 'Account(accountId: $accountId, createdAt: $createdAt, updatedAt: $updatedAt, isHost: $isHost, displayName: $displayName, imageURL: $imageURL, providers: $providers)';
+    return 'Account(accountId: $accountId, createdAt: $createdAt, updatedAt: $updatedAt, isHost: $isHost, displayName: $displayName, imageURL: $imageURL, providers: $providers, fcmTokens: $fcmTokens)';
   }
 
   @override
@@ -249,7 +268,8 @@ class _$_Account implements _Account {
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
-            const DeepCollectionEquality().equals(other.providers, providers));
+            const DeepCollectionEquality().equals(other.providers, providers) &&
+            const DeepCollectionEquality().equals(other.fcmTokens, fcmTokens));
   }
 
   @override
@@ -261,7 +281,8 @@ class _$_Account implements _Account {
       const DeepCollectionEquality().hash(isHost),
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(imageURL),
-      const DeepCollectionEquality().hash(providers));
+      const DeepCollectionEquality().hash(providers),
+      const DeepCollectionEquality().hash(fcmTokens));
 
   @JsonKey(ignore: true)
   @override
@@ -282,7 +303,8 @@ abstract class _Account implements Account {
       bool isHost,
       String? displayName,
       String? imageURL,
-      List<String> providers}) = _$_Account;
+      List<String> providers,
+      List<String> fcmTokens}) = _$_Account;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
 
@@ -302,6 +324,8 @@ abstract class _Account implements Account {
   String? get imageURL;
   @override
   List<String> get providers;
+  @override
+  List<String> get fcmTokens;
   @override
   @JsonKey(ignore: true)
   _$AccountCopyWith<_Account> get copyWith =>

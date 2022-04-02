@@ -14,6 +14,7 @@ class Message with _$Message {
     required String senderId,
     required String body,
     @Default(<String>[]) imageURLs,
+    @Default(false) bool isDeleted,
   }) = _Message;
 
   factory Message.fromJson(Map<String, dynamic> json) => _$MessageFromJson(json);

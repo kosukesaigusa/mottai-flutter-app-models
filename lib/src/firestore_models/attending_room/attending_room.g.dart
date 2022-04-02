@@ -13,6 +13,7 @@ _$_AttendingRoom _$$_AttendingRoomFromJson(Map<String, dynamic> json) =>
       updatedAt: const AutoTimestampConverter().fromJson(json['updatedAt']),
       unreadCount: json['unreadCount'] as int? ?? 0,
       muteNotification: json['muteNotification'] as bool? ?? false,
+      isBlocked: json['isBlocked'] as bool? ?? false,
       lastReadMessageId: json['lastReadMessageId'] as String?,
     );
 
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$_AttendingRoomToJson(_$_AttendingRoom instance) =>
       'updatedAt': const AutoTimestampConverter().toJson(instance.updatedAt),
       'unreadCount': instance.unreadCount,
       'muteNotification': instance.muteNotification,
+      'isBlocked': instance.isBlocked,
       'lastReadMessageId': instance.lastReadMessageId,
     };
