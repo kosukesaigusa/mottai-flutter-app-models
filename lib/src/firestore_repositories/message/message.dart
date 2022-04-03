@@ -273,12 +273,17 @@ class MessageRepository {
     required String roomId,
     Query<ReadStatus>? Function(Query<ReadStatus> query)? queryBuilder,
     int Function(ReadStatus lhs, ReadStatus rhs)? compare,
+    bool excludePendingWrites = false,
   }) {
     Query<ReadStatus> query = readStatusesRef(roomId: roomId);
     if (queryBuilder != null) {
       query = queryBuilder(query)!;
     }
-    return query.snapshots().map((qs) {
+    var collectionStream = query.snapshots();
+    if (excludePendingWrites) {
+      collectionStream = collectionStream.where((qs) => !qs.metadata.hasPendingWrites);
+    }
+    return collectionStream.map((qs) {
       final result = qs.docs.map((qds) => qds.data()).toList();
       if (compare != null) {
         result.sort(compare);
@@ -302,8 +307,15 @@ class MessageRepository {
   static Stream<ReadStatus?> subscribeReadStatus({
     required String roomId,
     required String readStatusId,
+    bool excludePendingWrites = false,
   }) {
-    final docStream = readStatusRef(roomId: roomId, readStatusId: readStatusId).snapshots();
-    return docStream.map((ds) => ds.data());
+    var docStream = readStatusRef(roomId: roomId, readStatusId: readStatusId).snapshots();
+    if (excludePendingWrites) {
+      docStream = docStream.where((ds) => !ds.metadata.hasPendingWrites);
+    }
+    return docStream.map((ds) {
+      final data = ds.data();
+      return data;
+    });
   }
 }
