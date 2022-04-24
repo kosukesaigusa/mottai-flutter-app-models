@@ -3,20 +3,20 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../firestore_models/account/account.dart';
 
-final accountRepositoryProvider = Provider<AccountRepository>((_) => AccountRepository());
+final accountRepositoryProvider =
+    Provider.autoDispose<AccountRepository>((_) => AccountRepository());
 
 class AccountRepository {
   AccountRepository();
 
   static const collectionName = 'accounts';
 
-  static final accountsRef =
-      FirebaseFirestore.instance.collection(collectionName).withConverter<Account>(
-            fromFirestore: (snapshot, _) => Account.fromDocumentSnapshot(snapshot),
-            toFirestore: (obj, _) => obj.toJson(),
-          );
+  final accountsRef = FirebaseFirestore.instance.collection(collectionName).withConverter<Account>(
+        fromFirestore: (snapshot, _) => Account.fromDocumentSnapshot(snapshot),
+        toFirestore: (obj, _) => obj.toJson(),
+      );
 
-  static DocumentReference<Account> accountRef({
+  DocumentReference<Account> accountRef({
     required String accountId,
   }) =>
       accountsRef.doc(accountId).withConverter<Account>(
@@ -25,7 +25,7 @@ class AccountRepository {
           );
 
   /// Account 一覧を取得する。
-  static Future<List<Account>> fetchAccounts({
+  Future<List<Account>> fetchAccounts({
     Source source = Source.serverAndCache,
     Query<Account>? Function(Query<Account> query)? queryBuilder,
     int Function(Account lhs, Account rhs)? compare,
@@ -43,7 +43,7 @@ class AccountRepository {
   }
 
   /// Account 一覧を購読する。
-  static Stream<List<Account>> subscribeAccounts({
+  Stream<List<Account>> subscribeAccounts({
     Query<Account>? Function(Query<Account> query)? queryBuilder,
     int Function(Account lhs, Account rhs)? compare,
   }) {
@@ -61,7 +61,7 @@ class AccountRepository {
   }
 
   /// 指定した Account を取得する。
-  static Future<Account?> fetchAccount({
+  Future<Account?> fetchAccount({
     required String accountId,
     Source source = Source.serverAndCache,
   }) async {
@@ -70,7 +70,7 @@ class AccountRepository {
   }
 
   /// 指定した Account を購読する。
-  static Stream<Account?> subscribeAccount({
+  Stream<Account?> subscribeAccount({
     required String accountId,
   }) {
     final docStream = accountRef(accountId: accountId).snapshots();

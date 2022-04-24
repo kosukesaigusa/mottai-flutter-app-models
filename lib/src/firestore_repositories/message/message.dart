@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../models.dart';
 
-final messageRepositoryProvider = Provider<MessageRepository>((_) => MessageRepository());
+final messageRepositoryProvider =
+    Provider.autoDispose<MessageRepository>((_) => MessageRepository());
 
 class MessageRepository {
   MessageRepository();

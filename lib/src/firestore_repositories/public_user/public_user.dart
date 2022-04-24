@@ -10,13 +10,13 @@ class PublicUserRepository {
 
   static const collectionName = 'publicUsers';
 
-  static final publicUsersRef =
+  final publicUsersRef =
       FirebaseFirestore.instance.collection(collectionName).withConverter<PublicUser>(
             fromFirestore: (snapshot, _) => PublicUser.fromDocumentSnapshot(snapshot),
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static DocumentReference<PublicUser> publicUserRef({
+  DocumentReference<PublicUser> publicUserRef({
     required String publicUserId,
   }) =>
       publicUsersRef.doc(publicUserId).withConverter<PublicUser>(
@@ -25,7 +25,7 @@ class PublicUserRepository {
           );
 
   /// PublicUser 一覧を取得する。
-  static Future<List<PublicUser>> fetchPublicUsers({
+  Future<List<PublicUser>> fetchPublicUsers({
     Source source = Source.serverAndCache,
     Query<PublicUser>? Function(Query<PublicUser> query)? queryBuilder,
     int Function(PublicUser lhs, PublicUser rhs)? compare,
@@ -43,7 +43,7 @@ class PublicUserRepository {
   }
 
   /// PublicUser 一覧を購読する。
-  static Stream<List<PublicUser>> subscribePublicUsers({
+  Stream<List<PublicUser>> subscribePublicUsers({
     Query<PublicUser>? Function(Query<PublicUser> query)? queryBuilder,
     int Function(PublicUser lhs, PublicUser rhs)? compare,
   }) {
@@ -61,7 +61,7 @@ class PublicUserRepository {
   }
 
   /// 指定した PublicUser を取得する。
-  static Future<PublicUser?> fetchPublicUser({
+  Future<PublicUser?> fetchPublicUser({
     required String publicUserId,
     Source source = Source.serverAndCache,
   }) async {
@@ -70,7 +70,7 @@ class PublicUserRepository {
   }
 
   /// 指定した PublicUser を購読する。
-  static Stream<PublicUser?> subscribePublicUser({
+  Stream<PublicUser?> subscribePublicUser({
     required String publicUserId,
   }) {
     final docStream = publicUserRef(publicUserId: publicUserId).snapshots();

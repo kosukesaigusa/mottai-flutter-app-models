@@ -4,20 +4,20 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../models.dart';
 
 final hostLocationRepositoryProvider =
-    Provider<HostLocationRepository>((_) => HostLocationRepository());
+    Provider.autoDispose<HostLocationRepository>((_) => HostLocationRepository());
 
 class HostLocationRepository {
   HostLocationRepository();
 
   static const collectionName = 'hostLocations';
 
-  static final hostLocationsRef =
+  final hostLocationsRef =
       FirebaseFirestore.instance.collection(collectionName).withConverter<HostLocation>(
             fromFirestore: (snapshot, _) => HostLocation.fromDocumentSnapshot(snapshot),
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static DocumentReference<HostLocation> hostLocationRef({
+  DocumentReference<HostLocation> hostLocationRef({
     required String hostLocationId,
   }) =>
       hostLocationsRef.doc(hostLocationId).withConverter<HostLocation>(
@@ -26,7 +26,7 @@ class HostLocationRepository {
           );
 
   /// HostLocation 一覧を取得する。
-  static Future<List<HostLocation>> fetchHostLocations({
+  Future<List<HostLocation>> fetchHostLocations({
     Source source = Source.serverAndCache,
     Query<HostLocation>? Function(Query<HostLocation> query)? queryBuilder,
     int Function(HostLocation lhs, HostLocation rhs)? compare,
@@ -44,7 +44,7 @@ class HostLocationRepository {
   }
 
   /// HostLocation 一覧を購読する。
-  static Stream<List<HostLocation>> subscribeHostLocations({
+  Stream<List<HostLocation>> subscribeHostLocations({
     Query<HostLocation>? Function(Query<HostLocation> query)? queryBuilder,
     int Function(HostLocation lhs, HostLocation rhs)? compare,
   }) {
@@ -62,7 +62,7 @@ class HostLocationRepository {
   }
 
   /// 指定した HostLocation を取得する。
-  static Future<HostLocation?> fetchHostLocation({
+  Future<HostLocation?> fetchHostLocation({
     required String hostLocationId,
     Source source = Source.serverAndCache,
   }) async {
@@ -72,7 +72,7 @@ class HostLocationRepository {
   }
 
   /// 指定した HostLocation を購読する。
-  static Stream<HostLocation?> subscribeHostLocation({
+  Stream<HostLocation?> subscribeHostLocation({
     required String hostLocationId,
   }) {
     final docStream = hostLocationRef(hostLocationId: hostLocationId).snapshots();

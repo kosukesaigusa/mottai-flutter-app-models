@@ -3,21 +3,21 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../models/playground_message.dart';
 
-final playgroundRepositoryProvider =
-    Provider<PlaygroundMessageRepository>((_) => PlaygroundMessageRepository());
+final playgroundMessageRepositoryProvider =
+    Provider.autoDispose<PlaygroundMessageRepository>((_) => PlaygroundMessageRepository());
 
 class PlaygroundMessageRepository {
   PlaygroundMessageRepository();
 
   static const collectionName = 'playgroundMessages';
 
-  static final playgroundMessagesRef =
+  final playgroundMessagesRef =
       FirebaseFirestore.instance.collection(collectionName).withConverter<PlaygroundMessage>(
             fromFirestore: (snapshot, _) => PlaygroundMessage.fromDocumentSnapshot(snapshot),
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static DocumentReference<PlaygroundMessage> playgroundMessageRef({
+  DocumentReference<PlaygroundMessage> playgroundMessageRef({
     required String playgroundMessageId,
   }) =>
       playgroundMessagesRef.doc(playgroundMessageId).withConverter<PlaygroundMessage>(
@@ -26,7 +26,7 @@ class PlaygroundMessageRepository {
           );
 
   /// PlaygroundMessage 一覧を取得する。
-  static Future<List<PlaygroundMessage>> fetchPlaygroundMessages({
+  Future<List<PlaygroundMessage>> fetchPlaygroundMessages({
     Source source = Source.serverAndCache,
     Query<PlaygroundMessage>? Function(Query<PlaygroundMessage> query)? queryBuilder,
     int Function(PlaygroundMessage lhs, PlaygroundMessage rhs)? compare,
@@ -44,7 +44,7 @@ class PlaygroundMessageRepository {
   }
 
   /// PlaygroundMessage 一覧を購読する。
-  static Stream<List<PlaygroundMessage>> subscribePlaygroundMessages({
+  Stream<List<PlaygroundMessage>> subscribePlaygroundMessages({
     Query<PlaygroundMessage>? Function(Query<PlaygroundMessage> query)? queryBuilder,
     int Function(PlaygroundMessage lhs, PlaygroundMessage rhs)? compare,
   }) {
@@ -62,7 +62,7 @@ class PlaygroundMessageRepository {
   }
 
   /// 指定した PlaygroundMessage を取得する。
-  static Future<PlaygroundMessage?> fetchPlaygroundMessage({
+  Future<PlaygroundMessage?> fetchPlaygroundMessage({
     required String playgroundMessageId,
     Source source = Source.serverAndCache,
   }) async {
@@ -72,7 +72,7 @@ class PlaygroundMessageRepository {
   }
 
   /// 指定した PlaygroundMessage を購読する。
-  static Stream<PlaygroundMessage?> subscribePlaygroundMessage({
+  Stream<PlaygroundMessage?> subscribePlaygroundMessage({
     required String playgroundMessageId,
   }) {
     final docStream = playgroundMessageRef(playgroundMessageId: playgroundMessageId).snapshots();
