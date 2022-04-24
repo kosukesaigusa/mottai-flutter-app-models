@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../firestore_models/account/account.dart';
+
+final accountRepository = Provider<AccountRepository>((_) => AccountRepository());
 
 class AccountRepository {
   AccountRepository();

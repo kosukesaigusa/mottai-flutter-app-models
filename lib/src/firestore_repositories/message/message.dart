@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../models.dart';
 
-/// message ドメイン関係のリポジトリ
+final messageRepository = Provider<MessageRepository>((_) => MessageRepository());
+
 class MessageRepository {
   MessageRepository();
 
