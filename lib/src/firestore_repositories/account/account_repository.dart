@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../firestore_models/account/account.dart';
 
-final accountRepository = Provider<AccountRepository>((_) => AccountRepository());
+final accountRepositoryProvider = Provider<AccountRepository>((_) => AccountRepository());
 
 class AccountRepository {
   AccountRepository();

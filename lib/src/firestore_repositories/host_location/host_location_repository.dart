@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../models.dart';
 
-final hostLocationRepository = Provider<HostLocationRepository>((_) => HostLocationRepository());
+final hostLocationRepositoryProvider =
+    Provider<HostLocationRepository>((_) => HostLocationRepository());
 
 class HostLocationRepository {
   HostLocationRepository();

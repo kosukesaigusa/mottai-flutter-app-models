@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../models.dart';
 
-final messageRepository = Provider<MessageRepository>((_) => MessageRepository());
+final messageRepositoryProvider = Provider<MessageRepository>((_) => MessageRepository());
 
 class MessageRepository {
   MessageRepository();
@@ -16,10 +16,10 @@ class MessageRepository {
   static const messageSubCollectionName = 'messages';
   static const readStatusSubCollectionName = 'readStatus';
 
-  static final baseRef =
+  final baseRef =
       FirebaseFirestore.instance.collection(domainCollectionName).doc(domainDocumentName);
 
-  static CollectionReference<AttendingRoom> attendingRoomsRef({
+  CollectionReference<AttendingRoom> attendingRoomsRef({
     required String userId,
   }) =>
       baseRef
@@ -31,24 +31,24 @@ class MessageRepository {
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static DocumentReference<AttendingRoom> attendingRoomRef({
+  DocumentReference<AttendingRoom> attendingRoomRef({
     required String userId,
     required String roomId,
   }) =>
       attendingRoomsRef(userId: userId).doc(roomId);
 
-  static final CollectionReference<Room> roomsRef =
+  CollectionReference<Room> get roomsRef =>
       baseRef.collection(roomSubCollectionName).withConverter<Room>(
             fromFirestore: (snapshot, _) => Room.fromDocumentSnapshot(snapshot),
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static DocumentReference<Room> roomRef({
+  DocumentReference<Room> roomRef({
     required String roomId,
   }) =>
       roomsRef.doc(roomId);
 
-  static CollectionReference<Message> messagesRef({
+  CollectionReference<Message> messagesRef({
     required String roomId,
   }) =>
       roomRef(roomId: roomId).collection(messageSubCollectionName).withConverter<Message>(
@@ -56,7 +56,7 @@ class MessageRepository {
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static DocumentReference<Message> messageRef({
+  DocumentReference<Message> messageRef({
     required String roomId,
     required String messageId,
   }) =>
@@ -65,7 +65,7 @@ class MessageRepository {
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static CollectionReference<ReadStatus> readStatusesRef({
+  CollectionReference<ReadStatus> readStatusesRef({
     required String roomId,
   }) =>
       roomRef(roomId: roomId).collection(readStatusSubCollectionName).withConverter<ReadStatus>(
@@ -73,7 +73,7 @@ class MessageRepository {
             toFirestore: (obj, _) => obj.toJson(),
           );
 
-  static DocumentReference<ReadStatus> readStatusRef({
+  DocumentReference<ReadStatus> readStatusRef({
     required String roomId,
     required String readStatusId,
   }) =>
@@ -83,7 +83,7 @@ class MessageRepository {
           );
 
   /// AttendingRoom 一覧を取得する。
-  static Future<List<AttendingRoom>> fetchAttendingRooms({
+  Future<List<AttendingRoom>> fetchAttendingRooms({
     required String userId,
     Source source = Source.serverAndCache,
     Query<AttendingRoom>? Function(Query<AttendingRoom> query)? queryBuilder,
@@ -102,7 +102,7 @@ class MessageRepository {
   }
 
   /// AttendingRoom 一覧を購読する。
-  static Stream<List<AttendingRoom>> subscribeAttendingRooms({
+  Stream<List<AttendingRoom>> subscribeAttendingRooms({
     required String userId,
     Query<AttendingRoom>? Function(Query<AttendingRoom> query)? queryBuilder,
     int Function(AttendingRoom lhs, AttendingRoom rhs)? compare,
@@ -121,7 +121,7 @@ class MessageRepository {
   }
 
   /// 指定した AttendingRoom を取得する。
-  static Future<AttendingRoom?> fetchAttendingRoom({
+  Future<AttendingRoom?> fetchAttendingRoom({
     required String userId,
     required String roomId,
     Source source = Source.serverAndCache,
@@ -132,7 +132,7 @@ class MessageRepository {
   }
 
   /// 指定した AttendingRoom を購読する。
-  static Stream<AttendingRoom?> subscribeAttendingRoom({
+  Stream<AttendingRoom?> subscribeAttendingRoom({
     required String userId,
     required String roomId,
   }) {
@@ -141,7 +141,7 @@ class MessageRepository {
   }
 
   /// Room 一覧を取得する。
-  static Future<List<Room>> fetchRooms({
+  Future<List<Room>> fetchRooms({
     Source source = Source.serverAndCache,
     Query<Room>? Function(Query<Room> query)? queryBuilder,
     int Function(Room lhs, Room rhs)? compare,
@@ -159,7 +159,7 @@ class MessageRepository {
   }
 
   /// Room 一覧を購読する。
-  static Stream<List<Room>> subscribeRooms({
+  Stream<List<Room>> subscribeRooms({
     Query<Room>? Function(Query<Room> query)? queryBuilder,
     int Function(Room lhs, Room rhs)? compare,
   }) {
@@ -177,7 +177,7 @@ class MessageRepository {
   }
 
   /// 指定した Room を取得する。
-  static Future<Room?> fetchRoom({
+  Future<Room?> fetchRoom({
     required String roomId,
     Source source = Source.serverAndCache,
   }) async {
@@ -186,7 +186,7 @@ class MessageRepository {
   }
 
   /// 指定した Room を購読する。
-  static Stream<Room?> subscribeRoom({
+  Stream<Room?> subscribeRoom({
     required String roomId,
   }) {
     final docStream = roomRef(roomId: roomId).snapshots();
@@ -194,7 +194,7 @@ class MessageRepository {
   }
 
   /// Message 一覧を取得する。
-  static Future<List<Message>> fetchMessages({
+  Future<List<Message>> fetchMessages({
     required String roomId,
     Source source = Source.serverAndCache,
     Query<Message>? Function(Query<Message> query)? queryBuilder,
@@ -213,7 +213,7 @@ class MessageRepository {
   }
 
   /// Message 一覧を購読する。
-  static Stream<List<Message>> subscribeMessages({
+  Stream<List<Message>> subscribeMessages({
     required String roomId,
     Query<Message>? Function(Query<Message> query)? queryBuilder,
     int Function(Message lhs, Message rhs)? compare,
@@ -232,7 +232,7 @@ class MessageRepository {
   }
 
   /// 指定した Message を取得する。
-  static Future<Message?> fetchMessage({
+  Future<Message?> fetchMessage({
     required String roomId,
     required String messageId,
     Source source = Source.serverAndCache,
@@ -243,7 +243,7 @@ class MessageRepository {
   }
 
   /// 指定した Message を購読する。
-  static Stream<Message?> subscribeMessage({
+  Stream<Message?> subscribeMessage({
     required String roomId,
     required String messageId,
   }) {
@@ -252,7 +252,7 @@ class MessageRepository {
   }
 
   /// ReadStatus 一覧を取得する。
-  static Future<List<ReadStatus>> fetchReadStatuses({
+  Future<List<ReadStatus>> fetchReadStatuses({
     required String roomId,
     Source source = Source.serverAndCache,
     Query<ReadStatus>? Function(Query<ReadStatus> query)? queryBuilder,
@@ -271,7 +271,7 @@ class MessageRepository {
   }
 
   /// ReadStatus 一覧を購読する。
-  static Stream<List<ReadStatus>> subscribeReadStatuses({
+  Stream<List<ReadStatus>> subscribeReadStatuses({
     required String roomId,
     Query<ReadStatus>? Function(Query<ReadStatus> query)? queryBuilder,
     int Function(ReadStatus lhs, ReadStatus rhs)? compare,
@@ -295,7 +295,7 @@ class MessageRepository {
   }
 
   /// 指定した ReadStatus を取得する。
-  static Future<ReadStatus?> fetchReadStatus({
+  Future<ReadStatus?> fetchReadStatus({
     required String roomId,
     required String readStatusId,
     Source source = Source.serverAndCache,
@@ -306,7 +306,7 @@ class MessageRepository {
   }
 
   /// 指定した ReadStatus を購読する。
-  static Stream<ReadStatus?> subscribeReadStatus({
+  Stream<ReadStatus?> subscribeReadStatus({
     required String roomId,
     required String readStatusId,
     bool excludePendingWrites = false,

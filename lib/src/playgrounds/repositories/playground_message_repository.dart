@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../models/playground_message.dart';
 
-final playgroundRepository =
+final playgroundRepositoryProvider =
     Provider<PlaygroundMessageRepository>((_) => PlaygroundMessageRepository());
 
 class PlaygroundMessageRepository {
