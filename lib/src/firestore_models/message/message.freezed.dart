@@ -28,7 +28,7 @@ class _$MessageTearOff {
       String type = 'plain',
       required String senderId,
       required String body,
-      dynamic imageURLs = const <String>[],
+      List<String> imageURLs = const <String>[],
       bool isDeleted = false}) {
     return _Message(
       messageId: messageId,
@@ -57,7 +57,7 @@ mixin _$Message {
   String get type => throw _privateConstructorUsedError;
   String get senderId => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
-  dynamic get imageURLs => throw _privateConstructorUsedError;
+  List<String> get imageURLs => throw _privateConstructorUsedError;
   bool get isDeleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -75,7 +75,7 @@ abstract class $MessageCopyWith<$Res> {
       String type,
       String senderId,
       String body,
-      dynamic imageURLs,
+      List<String> imageURLs,
       bool isDeleted});
 }
 
@@ -121,7 +121,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
       imageURLs: imageURLs == freezed
           ? _value.imageURLs
           : imageURLs // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as List<String>,
       isDeleted: isDeleted == freezed
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
@@ -141,7 +141,7 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String type,
       String senderId,
       String body,
-      dynamic imageURLs,
+      List<String> imageURLs,
       bool isDeleted});
 }
 
@@ -185,7 +185,10 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
-      imageURLs: imageURLs == freezed ? _value.imageURLs : imageURLs,
+      imageURLs: imageURLs == freezed
+          ? _value.imageURLs
+          : imageURLs // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       isDeleted: isDeleted == freezed
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
@@ -223,7 +226,7 @@ class _$_Message implements _Message {
   final String body;
   @JsonKey()
   @override
-  final dynamic imageURLs;
+  final List<String> imageURLs;
   @JsonKey()
   @override
   final bool isDeleted;
@@ -276,7 +279,7 @@ abstract class _Message implements Message {
       String type,
       required String senderId,
       required String body,
-      dynamic imageURLs,
+      List<String> imageURLs,
       bool isDeleted}) = _$_Message;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$_Message.fromJson;
@@ -293,7 +296,7 @@ abstract class _Message implements Message {
   @override
   String get body;
   @override
-  dynamic get imageURLs;
+  List<String> get imageURLs;
   @override
   bool get isDeleted;
   @override

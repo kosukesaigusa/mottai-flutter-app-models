@@ -12,7 +12,10 @@ _$_Message _$$_MessageFromJson(Map<String, dynamic> json) => _$_Message(
       type: json['type'] as String? ?? 'plain',
       senderId: json['senderId'] as String,
       body: json['body'] as String,
-      imageURLs: json['imageURLs'] ?? const <String>[],
+      imageURLs: (json['imageURLs'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
       isDeleted: json['isDeleted'] as bool? ?? false,
     );
 

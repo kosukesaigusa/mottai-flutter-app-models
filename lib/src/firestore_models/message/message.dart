@@ -13,7 +13,7 @@ class Message with _$Message {
     @Default('plain') String type,
     required String senderId,
     required String body,
-    @Default(<String>[]) imageURLs,
+    @Default(<String>[]) List<String> imageURLs,
     @Default(false) bool isDeleted,
   }) = _Message;
 
