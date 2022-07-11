@@ -8,11 +8,12 @@ part 'message.g.dart';
 @freezed
 class Message with _$Message {
   const factory Message({
-    required String messageId,
+    @Default('') String messageId,
     @AutoTimestampConverter() DateTime? createdAt,
+    // TODO: コンバータも定義して enum にしたい
     @Default('plain') String type,
-    required String senderId,
-    required String body,
+    @Default('') String senderId,
+    @Default('') String body,
     @Default(<String>[]) List<String> imageURLs,
     @Default(false) bool isDeleted,
   }) = _Message;

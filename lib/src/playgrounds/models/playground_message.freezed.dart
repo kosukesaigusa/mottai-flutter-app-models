@@ -12,34 +12,11 @@ part of 'playground_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PlaygroundMessage _$PlaygroundMessageFromJson(Map<String, dynamic> json) {
   return _PlaygroundMessage.fromJson(json);
 }
-
-/// @nodoc
-class _$PlaygroundMessageTearOff {
-  const _$PlaygroundMessageTearOff();
-
-  _PlaygroundMessage call(
-      {required String playgroundMessageId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      required String body}) {
-    return _PlaygroundMessage(
-      playgroundMessageId: playgroundMessageId,
-      createdAt: createdAt,
-      body: body,
-    );
-  }
-
-  PlaygroundMessage fromJson(Map<String, Object?> json) {
-    return PlaygroundMessage.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PlaygroundMessage = _$PlaygroundMessageTearOff();
 
 /// @nodoc
 mixin _$PlaygroundMessage {
@@ -98,11 +75,11 @@ class _$PlaygroundMessageCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PlaygroundMessageCopyWith<$Res>
+abstract class _$$_PlaygroundMessageCopyWith<$Res>
     implements $PlaygroundMessageCopyWith<$Res> {
-  factory _$PlaygroundMessageCopyWith(
-          _PlaygroundMessage value, $Res Function(_PlaygroundMessage) then) =
-      __$PlaygroundMessageCopyWithImpl<$Res>;
+  factory _$$_PlaygroundMessageCopyWith(_$_PlaygroundMessage value,
+          $Res Function(_$_PlaygroundMessage) then) =
+      __$$_PlaygroundMessageCopyWithImpl<$Res>;
   @override
   $Res call(
       {String playgroundMessageId,
@@ -111,15 +88,15 @@ abstract class _$PlaygroundMessageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PlaygroundMessageCopyWithImpl<$Res>
+class __$$_PlaygroundMessageCopyWithImpl<$Res>
     extends _$PlaygroundMessageCopyWithImpl<$Res>
-    implements _$PlaygroundMessageCopyWith<$Res> {
-  __$PlaygroundMessageCopyWithImpl(
-      _PlaygroundMessage _value, $Res Function(_PlaygroundMessage) _then)
-      : super(_value, (v) => _then(v as _PlaygroundMessage));
+    implements _$$_PlaygroundMessageCopyWith<$Res> {
+  __$$_PlaygroundMessageCopyWithImpl(
+      _$_PlaygroundMessage _value, $Res Function(_$_PlaygroundMessage) _then)
+      : super(_value, (v) => _then(v as _$_PlaygroundMessage));
 
   @override
-  _PlaygroundMessage get _value => super._value as _PlaygroundMessage;
+  _$_PlaygroundMessage get _value => super._value as _$_PlaygroundMessage;
 
   @override
   $Res call({
@@ -127,7 +104,7 @@ class __$PlaygroundMessageCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? body = freezed,
   }) {
-    return _then(_PlaygroundMessage(
+    return _then(_$_PlaygroundMessage(
       playgroundMessageId: playgroundMessageId == freezed
           ? _value.playgroundMessageId
           : playgroundMessageId // ignore: cast_nullable_to_non_nullable
@@ -172,13 +149,14 @@ class _$_PlaygroundMessage implements _PlaygroundMessage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlaygroundMessage &&
+            other is _$_PlaygroundMessage &&
             const DeepCollectionEquality()
                 .equals(other.playgroundMessageId, playgroundMessageId) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.body, body));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -188,8 +166,9 @@ class _$_PlaygroundMessage implements _PlaygroundMessage {
 
   @JsonKey(ignore: true)
   @override
-  _$PlaygroundMessageCopyWith<_PlaygroundMessage> get copyWith =>
-      __$PlaygroundMessageCopyWithImpl<_PlaygroundMessage>(this, _$identity);
+  _$$_PlaygroundMessageCopyWith<_$_PlaygroundMessage> get copyWith =>
+      __$$_PlaygroundMessageCopyWithImpl<_$_PlaygroundMessage>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -199,9 +178,9 @@ class _$_PlaygroundMessage implements _PlaygroundMessage {
 
 abstract class _PlaygroundMessage implements PlaygroundMessage {
   const factory _PlaygroundMessage(
-      {required String playgroundMessageId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      required String body}) = _$_PlaygroundMessage;
+      {required final String playgroundMessageId,
+      @AutoTimestampConverter() final DateTime? createdAt,
+      required final String body}) = _$_PlaygroundMessage;
 
   factory _PlaygroundMessage.fromJson(Map<String, dynamic> json) =
       _$_PlaygroundMessage.fromJson;
@@ -215,6 +194,6 @@ abstract class _PlaygroundMessage implements PlaygroundMessage {
   String get body;
   @override
   @JsonKey(ignore: true)
-  _$PlaygroundMessageCopyWith<_PlaygroundMessage> get copyWith =>
+  _$$_PlaygroundMessageCopyWith<_$_PlaygroundMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }

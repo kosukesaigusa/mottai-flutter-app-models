@@ -12,42 +12,11 @@ part of 'attending_room.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AttendingRoom _$AttendingRoomFromJson(Map<String, dynamic> json) {
   return _AttendingRoom.fromJson(json);
 }
-
-/// @nodoc
-class _$AttendingRoomTearOff {
-  const _$AttendingRoomTearOff();
-
-  _AttendingRoom call(
-      {required String roomId,
-      required String partnerId,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      int unreadCount = 0,
-      bool muteNotification = false,
-      bool isBlocked = false,
-      String? lastReadMessageId}) {
-    return _AttendingRoom(
-      roomId: roomId,
-      partnerId: partnerId,
-      updatedAt: updatedAt,
-      unreadCount: unreadCount,
-      muteNotification: muteNotification,
-      isBlocked: isBlocked,
-      lastReadMessageId: lastReadMessageId,
-    );
-  }
-
-  AttendingRoom fromJson(Map<String, Object?> json) {
-    return AttendingRoom.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AttendingRoom = _$AttendingRoomTearOff();
 
 /// @nodoc
 mixin _$AttendingRoom {
@@ -58,7 +27,7 @@ mixin _$AttendingRoom {
   int get unreadCount => throw _privateConstructorUsedError;
   bool get muteNotification => throw _privateConstructorUsedError;
   bool get isBlocked => throw _privateConstructorUsedError;
-  String? get lastReadMessageId => throw _privateConstructorUsedError;
+  String get lastReadMessageId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -78,7 +47,7 @@ abstract class $AttendingRoomCopyWith<$Res> {
       int unreadCount,
       bool muteNotification,
       bool isBlocked,
-      String? lastReadMessageId});
+      String lastReadMessageId});
 }
 
 /// @nodoc
@@ -128,17 +97,17 @@ class _$AttendingRoomCopyWithImpl<$Res>
       lastReadMessageId: lastReadMessageId == freezed
           ? _value.lastReadMessageId
           : lastReadMessageId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$AttendingRoomCopyWith<$Res>
+abstract class _$$_AttendingRoomCopyWith<$Res>
     implements $AttendingRoomCopyWith<$Res> {
-  factory _$AttendingRoomCopyWith(
-          _AttendingRoom value, $Res Function(_AttendingRoom) then) =
-      __$AttendingRoomCopyWithImpl<$Res>;
+  factory _$$_AttendingRoomCopyWith(
+          _$_AttendingRoom value, $Res Function(_$_AttendingRoom) then) =
+      __$$_AttendingRoomCopyWithImpl<$Res>;
   @override
   $Res call(
       {String roomId,
@@ -147,19 +116,19 @@ abstract class _$AttendingRoomCopyWith<$Res>
       int unreadCount,
       bool muteNotification,
       bool isBlocked,
-      String? lastReadMessageId});
+      String lastReadMessageId});
 }
 
 /// @nodoc
-class __$AttendingRoomCopyWithImpl<$Res>
+class __$$_AttendingRoomCopyWithImpl<$Res>
     extends _$AttendingRoomCopyWithImpl<$Res>
-    implements _$AttendingRoomCopyWith<$Res> {
-  __$AttendingRoomCopyWithImpl(
-      _AttendingRoom _value, $Res Function(_AttendingRoom) _then)
-      : super(_value, (v) => _then(v as _AttendingRoom));
+    implements _$$_AttendingRoomCopyWith<$Res> {
+  __$$_AttendingRoomCopyWithImpl(
+      _$_AttendingRoom _value, $Res Function(_$_AttendingRoom) _then)
+      : super(_value, (v) => _then(v as _$_AttendingRoom));
 
   @override
-  _AttendingRoom get _value => super._value as _AttendingRoom;
+  _$_AttendingRoom get _value => super._value as _$_AttendingRoom;
 
   @override
   $Res call({
@@ -171,7 +140,7 @@ class __$AttendingRoomCopyWithImpl<$Res>
     Object? isBlocked = freezed,
     Object? lastReadMessageId = freezed,
   }) {
-    return _then(_AttendingRoom(
+    return _then(_$_AttendingRoom(
       roomId: roomId == freezed
           ? _value.roomId
           : roomId // ignore: cast_nullable_to_non_nullable
@@ -199,7 +168,7 @@ class __$AttendingRoomCopyWithImpl<$Res>
       lastReadMessageId: lastReadMessageId == freezed
           ? _value.lastReadMessageId
           : lastReadMessageId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -208,35 +177,38 @@ class __$AttendingRoomCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AttendingRoom implements _AttendingRoom {
   const _$_AttendingRoom(
-      {required this.roomId,
-      required this.partnerId,
+      {this.roomId = '',
+      this.partnerId = '',
       @AutoTimestampConverter() this.updatedAt,
       this.unreadCount = 0,
       this.muteNotification = false,
       this.isBlocked = false,
-      this.lastReadMessageId});
+      this.lastReadMessageId = ''});
 
   factory _$_AttendingRoom.fromJson(Map<String, dynamic> json) =>
       _$$_AttendingRoomFromJson(json);
 
   @override
+  @JsonKey()
   final String roomId;
   @override
+  @JsonKey()
   final String partnerId;
   @override
   @AutoTimestampConverter()
   final DateTime? updatedAt;
-  @JsonKey()
   @override
+  @JsonKey()
   final int unreadCount;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool muteNotification;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isBlocked;
   @override
-  final String? lastReadMessageId;
+  @JsonKey()
+  final String lastReadMessageId;
 
   @override
   String toString() {
@@ -247,7 +219,7 @@ class _$_AttendingRoom implements _AttendingRoom {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AttendingRoom &&
+            other is _$_AttendingRoom &&
             const DeepCollectionEquality().equals(other.roomId, roomId) &&
             const DeepCollectionEquality().equals(other.partnerId, partnerId) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
@@ -260,6 +232,7 @@ class _$_AttendingRoom implements _AttendingRoom {
                 .equals(other.lastReadMessageId, lastReadMessageId));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -273,8 +246,8 @@ class _$_AttendingRoom implements _AttendingRoom {
 
   @JsonKey(ignore: true)
   @override
-  _$AttendingRoomCopyWith<_AttendingRoom> get copyWith =>
-      __$AttendingRoomCopyWithImpl<_AttendingRoom>(this, _$identity);
+  _$$_AttendingRoomCopyWith<_$_AttendingRoom> get copyWith =>
+      __$$_AttendingRoomCopyWithImpl<_$_AttendingRoom>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -284,13 +257,13 @@ class _$_AttendingRoom implements _AttendingRoom {
 
 abstract class _AttendingRoom implements AttendingRoom {
   const factory _AttendingRoom(
-      {required String roomId,
-      required String partnerId,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      int unreadCount,
-      bool muteNotification,
-      bool isBlocked,
-      String? lastReadMessageId}) = _$_AttendingRoom;
+      {final String roomId,
+      final String partnerId,
+      @AutoTimestampConverter() final DateTime? updatedAt,
+      final int unreadCount,
+      final bool muteNotification,
+      final bool isBlocked,
+      final String lastReadMessageId}) = _$_AttendingRoom;
 
   factory _AttendingRoom.fromJson(Map<String, dynamic> json) =
       _$_AttendingRoom.fromJson;
@@ -309,9 +282,9 @@ abstract class _AttendingRoom implements AttendingRoom {
   @override
   bool get isBlocked;
   @override
-  String? get lastReadMessageId;
+  String get lastReadMessageId;
   @override
   @JsonKey(ignore: true)
-  _$AttendingRoomCopyWith<_AttendingRoom> get copyWith =>
+  _$$_AttendingRoomCopyWith<_$_AttendingRoom> get copyWith =>
       throw _privateConstructorUsedError;
 }

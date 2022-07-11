@@ -8,13 +8,13 @@ part 'attending_room.g.dart';
 @freezed
 class AttendingRoom with _$AttendingRoom {
   const factory AttendingRoom({
-    required String roomId,
-    required String partnerId,
+    @Default('') String roomId,
+    @Default('') String partnerId,
     @AutoTimestampConverter() DateTime? updatedAt,
     @Default(0) int unreadCount,
     @Default(false) bool muteNotification,
     @Default(false) bool isBlocked,
-    String? lastReadMessageId,
+    @Default('') String lastReadMessageId,
   }) = _AttendingRoom;
 
   factory AttendingRoom.fromJson(Map<String, dynamic> json) => _$AttendingRoomFromJson(json);

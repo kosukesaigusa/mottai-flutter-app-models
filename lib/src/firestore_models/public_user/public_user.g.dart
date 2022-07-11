@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type, todo
+
 part of 'public_user.dart';
 
 // **************************************************************************
@@ -7,11 +9,20 @@ part of 'public_user.dart';
 // **************************************************************************
 
 _$_PublicUser _$$_PublicUserFromJson(Map<String, dynamic> json) =>
-    _$_PublicUser(
-      userId: json['userId'] as String,
-      updatedAt: const AutoTimestampConverter().fromJson(json['updatedAt']),
-      displayName: json['displayName'] as String,
-      imageURL: json['imageURL'] as String?,
+    $checkedCreate(
+      r'_$_PublicUser',
+      json,
+      ($checkedConvert) {
+        final val = _$_PublicUser(
+          userId: $checkedConvert('userId', (v) => v as String? ?? ''),
+          updatedAt: $checkedConvert(
+              'updatedAt', (v) => const AutoTimestampConverter().fromJson(v)),
+          displayName:
+              $checkedConvert('displayName', (v) => v as String? ?? ''),
+          imageURL: $checkedConvert('imageURL', (v) => v as String? ?? ''),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$_PublicUserToJson(_$_PublicUser instance) =>

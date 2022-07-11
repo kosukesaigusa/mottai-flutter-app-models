@@ -12,45 +12,18 @@ part of 'room.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Room _$RoomFromJson(Map<String, dynamic> json) {
   return _Room.fromJson(json);
 }
 
 /// @nodoc
-class _$RoomTearOff {
-  const _$RoomTearOff();
-
-  _Room call(
-      {required String roomId,
-      required String hostId,
-      required String workerId,
-      String? imageURL,
-      @AutoTimestampConverter() DateTime? updatedAt}) {
-    return _Room(
-      roomId: roomId,
-      hostId: hostId,
-      workerId: workerId,
-      imageURL: imageURL,
-      updatedAt: updatedAt,
-    );
-  }
-
-  Room fromJson(Map<String, Object?> json) {
-    return Room.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Room = _$RoomTearOff();
-
-/// @nodoc
 mixin _$Room {
   String get roomId => throw _privateConstructorUsedError;
   String get hostId => throw _privateConstructorUsedError;
   String get workerId => throw _privateConstructorUsedError;
-  String? get imageURL => throw _privateConstructorUsedError;
+  String get imageURL => throw _privateConstructorUsedError;
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -67,7 +40,7 @@ abstract class $RoomCopyWith<$Res> {
       {String roomId,
       String hostId,
       String workerId,
-      String? imageURL,
+      String imageURL,
       @AutoTimestampConverter() DateTime? updatedAt});
 }
 
@@ -103,7 +76,7 @@ class _$RoomCopyWithImpl<$Res> implements $RoomCopyWith<$Res> {
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -113,26 +86,26 @@ class _$RoomCopyWithImpl<$Res> implements $RoomCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
-  factory _$RoomCopyWith(_Room value, $Res Function(_Room) then) =
-      __$RoomCopyWithImpl<$Res>;
+abstract class _$$_RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
+  factory _$$_RoomCopyWith(_$_Room value, $Res Function(_$_Room) then) =
+      __$$_RoomCopyWithImpl<$Res>;
   @override
   $Res call(
       {String roomId,
       String hostId,
       String workerId,
-      String? imageURL,
+      String imageURL,
       @AutoTimestampConverter() DateTime? updatedAt});
 }
 
 /// @nodoc
-class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
-    implements _$RoomCopyWith<$Res> {
-  __$RoomCopyWithImpl(_Room _value, $Res Function(_Room) _then)
-      : super(_value, (v) => _then(v as _Room));
+class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
+    implements _$$_RoomCopyWith<$Res> {
+  __$$_RoomCopyWithImpl(_$_Room _value, $Res Function(_$_Room) _then)
+      : super(_value, (v) => _then(v as _$_Room));
 
   @override
-  _Room get _value => super._value as _Room;
+  _$_Room get _value => super._value as _$_Room;
 
   @override
   $Res call({
@@ -142,7 +115,7 @@ class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
     Object? imageURL = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Room(
+    return _then(_$_Room(
       roomId: roomId == freezed
           ? _value.roomId
           : roomId // ignore: cast_nullable_to_non_nullable
@@ -158,7 +131,7 @@ class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -171,22 +144,26 @@ class __$RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Room implements _Room {
   const _$_Room(
-      {required this.roomId,
-      required this.hostId,
-      required this.workerId,
-      this.imageURL,
+      {this.roomId = '',
+      this.hostId = '',
+      this.workerId = '',
+      this.imageURL = '',
       @AutoTimestampConverter() this.updatedAt});
 
   factory _$_Room.fromJson(Map<String, dynamic> json) => _$$_RoomFromJson(json);
 
   @override
+  @JsonKey()
   final String roomId;
   @override
+  @JsonKey()
   final String hostId;
   @override
+  @JsonKey()
   final String workerId;
   @override
-  final String? imageURL;
+  @JsonKey()
+  final String imageURL;
   @override
   @AutoTimestampConverter()
   final DateTime? updatedAt;
@@ -200,7 +177,7 @@ class _$_Room implements _Room {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Room &&
+            other is _$_Room &&
             const DeepCollectionEquality().equals(other.roomId, roomId) &&
             const DeepCollectionEquality().equals(other.hostId, hostId) &&
             const DeepCollectionEquality().equals(other.workerId, workerId) &&
@@ -208,6 +185,7 @@ class _$_Room implements _Room {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -219,8 +197,8 @@ class _$_Room implements _Room {
 
   @JsonKey(ignore: true)
   @override
-  _$RoomCopyWith<_Room> get copyWith =>
-      __$RoomCopyWithImpl<_Room>(this, _$identity);
+  _$$_RoomCopyWith<_$_Room> get copyWith =>
+      __$$_RoomCopyWithImpl<_$_Room>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -230,11 +208,11 @@ class _$_Room implements _Room {
 
 abstract class _Room implements Room {
   const factory _Room(
-      {required String roomId,
-      required String hostId,
-      required String workerId,
-      String? imageURL,
-      @AutoTimestampConverter() DateTime? updatedAt}) = _$_Room;
+      {final String roomId,
+      final String hostId,
+      final String workerId,
+      final String imageURL,
+      @AutoTimestampConverter() final DateTime? updatedAt}) = _$_Room;
 
   factory _Room.fromJson(Map<String, dynamic> json) = _$_Room.fromJson;
 
@@ -245,11 +223,11 @@ abstract class _Room implements Room {
   @override
   String get workerId;
   @override
-  String? get imageURL;
+  String get imageURL;
   @override
   @AutoTimestampConverter()
   DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$RoomCopyWith<_Room> get copyWith => throw _privateConstructorUsedError;
+  _$$_RoomCopyWith<_$_Room> get copyWith => throw _privateConstructorUsedError;
 }

@@ -8,10 +8,10 @@ part 'room.g.dart';
 @freezed
 class Room with _$Room {
   const factory Room({
-    required String roomId,
-    required String hostId,
-    required String workerId,
-    String? imageURL,
+    @Default('') String roomId,
+    @Default('') String hostId,
+    @Default('') String workerId,
+    @Default('') String imageURL,
     @AutoTimestampConverter() DateTime? updatedAt,
   }) = _Room;
 

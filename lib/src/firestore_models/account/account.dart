@@ -8,12 +8,12 @@ part 'account.g.dart';
 @freezed
 class Account with _$Account {
   const factory Account({
-    required String accountId,
+    @Default('') String accountId,
     @AutoTimestampConverter() DateTime? createdAt,
     @AutoTimestampConverter() DateTime? updatedAt,
     @Default(false) bool isHost,
-    String? displayName,
-    String? imageURL,
+    @Default('') String displayName,
+    @Default('') String imageURL,
     @Default(<String>[]) List<String> providers,
     @Default(<String>[]) List<String> fcmTokens,
   }) = _Account;

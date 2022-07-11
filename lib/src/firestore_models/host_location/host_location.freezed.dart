@@ -12,46 +12,11 @@ part of 'host_location.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 HostLocation _$HostLocationFromJson(Map<String, dynamic> json) {
   return _HostLocation.fromJson(json);
 }
-
-/// @nodoc
-class _$HostLocationTearOff {
-  const _$HostLocationTearOff();
-
-  _HostLocation call(
-      {required String hostLocationId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      required String title,
-      required String hostId,
-      required String address,
-      required String description,
-      required String imageURL,
-      @FirestorePositionConverter() required FirestorePosition position}) {
-    return _HostLocation(
-      hostLocationId: hostLocationId,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-      title: title,
-      hostId: hostId,
-      address: address,
-      description: description,
-      imageURL: imageURL,
-      position: position,
-    );
-  }
-
-  HostLocation fromJson(Map<String, Object?> json) {
-    return HostLocation.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $HostLocation = _$HostLocationTearOff();
 
 /// @nodoc
 mixin _$HostLocation {
@@ -162,11 +127,11 @@ class _$HostLocationCopyWithImpl<$Res> implements $HostLocationCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$HostLocationCopyWith<$Res>
+abstract class _$$_HostLocationCopyWith<$Res>
     implements $HostLocationCopyWith<$Res> {
-  factory _$HostLocationCopyWith(
-          _HostLocation value, $Res Function(_HostLocation) then) =
-      __$HostLocationCopyWithImpl<$Res>;
+  factory _$$_HostLocationCopyWith(
+          _$_HostLocation value, $Res Function(_$_HostLocation) then) =
+      __$$_HostLocationCopyWithImpl<$Res>;
   @override
   $Res call(
       {String hostLocationId,
@@ -184,14 +149,15 @@ abstract class _$HostLocationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$HostLocationCopyWithImpl<$Res> extends _$HostLocationCopyWithImpl<$Res>
-    implements _$HostLocationCopyWith<$Res> {
-  __$HostLocationCopyWithImpl(
-      _HostLocation _value, $Res Function(_HostLocation) _then)
-      : super(_value, (v) => _then(v as _HostLocation));
+class __$$_HostLocationCopyWithImpl<$Res>
+    extends _$HostLocationCopyWithImpl<$Res>
+    implements _$$_HostLocationCopyWith<$Res> {
+  __$$_HostLocationCopyWithImpl(
+      _$_HostLocation _value, $Res Function(_$_HostLocation) _then)
+      : super(_value, (v) => _then(v as _$_HostLocation));
 
   @override
-  _HostLocation get _value => super._value as _HostLocation;
+  _$_HostLocation get _value => super._value as _$_HostLocation;
 
   @override
   $Res call({
@@ -205,7 +171,7 @@ class __$HostLocationCopyWithImpl<$Res> extends _$HostLocationCopyWithImpl<$Res>
     Object? imageURL = freezed,
     Object? position = freezed,
   }) {
-    return _then(_HostLocation(
+    return _then(_$_HostLocation(
       hostLocationId: hostLocationId == freezed
           ? _value.hostLocationId
           : hostLocationId // ignore: cast_nullable_to_non_nullable
@@ -250,20 +216,24 @@ class __$HostLocationCopyWithImpl<$Res> extends _$HostLocationCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_HostLocation implements _HostLocation {
   const _$_HostLocation(
-      {required this.hostLocationId,
-      @AutoTimestampConverter() this.createdAt,
-      @AutoTimestampConverter() this.updatedAt,
-      required this.title,
-      required this.hostId,
-      required this.address,
-      required this.description,
-      required this.imageURL,
-      @FirestorePositionConverter() required this.position});
+      {this.hostLocationId = '',
+      @AutoTimestampConverter()
+          this.createdAt,
+      @AutoTimestampConverter()
+          this.updatedAt,
+      this.title = '',
+      this.hostId = '',
+      this.address = '',
+      this.description = '',
+      this.imageURL = '',
+      @FirestorePositionConverter()
+          this.position = FirestorePosition.defaultValue});
 
   factory _$_HostLocation.fromJson(Map<String, dynamic> json) =>
       _$$_HostLocationFromJson(json);
 
   @override
+  @JsonKey()
   final String hostLocationId;
   @override
   @AutoTimestampConverter()
@@ -272,16 +242,22 @@ class _$_HostLocation implements _HostLocation {
   @AutoTimestampConverter()
   final DateTime? updatedAt;
   @override
+  @JsonKey()
   final String title;
   @override
+  @JsonKey()
   final String hostId;
   @override
+  @JsonKey()
   final String address;
   @override
+  @JsonKey()
   final String description;
   @override
+  @JsonKey()
   final String imageURL;
   @override
+  @JsonKey()
   @FirestorePositionConverter()
   final FirestorePosition position;
 
@@ -294,7 +270,7 @@ class _$_HostLocation implements _HostLocation {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HostLocation &&
+            other is _$_HostLocation &&
             const DeepCollectionEquality()
                 .equals(other.hostLocationId, hostLocationId) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -308,6 +284,7 @@ class _$_HostLocation implements _HostLocation {
             const DeepCollectionEquality().equals(other.position, position));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -323,8 +300,8 @@ class _$_HostLocation implements _HostLocation {
 
   @JsonKey(ignore: true)
   @override
-  _$HostLocationCopyWith<_HostLocation> get copyWith =>
-      __$HostLocationCopyWithImpl<_HostLocation>(this, _$identity);
+  _$$_HostLocationCopyWith<_$_HostLocation> get copyWith =>
+      __$$_HostLocationCopyWithImpl<_$_HostLocation>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -334,15 +311,15 @@ class _$_HostLocation implements _HostLocation {
 
 abstract class _HostLocation implements HostLocation {
   const factory _HostLocation(
-          {required String hostLocationId,
-          @AutoTimestampConverter() DateTime? createdAt,
-          @AutoTimestampConverter() DateTime? updatedAt,
-          required String title,
-          required String hostId,
-          required String address,
-          required String description,
-          required String imageURL,
-          @FirestorePositionConverter() required FirestorePosition position}) =
+          {final String hostLocationId,
+          @AutoTimestampConverter() final DateTime? createdAt,
+          @AutoTimestampConverter() final DateTime? updatedAt,
+          final String title,
+          final String hostId,
+          final String address,
+          final String description,
+          final String imageURL,
+          @FirestorePositionConverter() final FirestorePosition position}) =
       _$_HostLocation;
 
   factory _HostLocation.fromJson(Map<String, dynamic> json) =
@@ -371,6 +348,166 @@ abstract class _HostLocation implements HostLocation {
   FirestorePosition get position;
   @override
   @JsonKey(ignore: true)
-  _$HostLocationCopyWith<_HostLocation> get copyWith =>
+  _$$_HostLocationCopyWith<_$_HostLocation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+FirestorePosition _$FirestorePositionFromJson(Map<String, dynamic> json) {
+  return _FirestorePosition.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FirestorePosition {
+  String get geohash => throw _privateConstructorUsedError;
+  @GeoPointConverter()
+  GeoPoint get geopoint => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FirestorePositionCopyWith<FirestorePosition> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FirestorePositionCopyWith<$Res> {
+  factory $FirestorePositionCopyWith(
+          FirestorePosition value, $Res Function(FirestorePosition) then) =
+      _$FirestorePositionCopyWithImpl<$Res>;
+  $Res call({String geohash, @GeoPointConverter() GeoPoint geopoint});
+}
+
+/// @nodoc
+class _$FirestorePositionCopyWithImpl<$Res>
+    implements $FirestorePositionCopyWith<$Res> {
+  _$FirestorePositionCopyWithImpl(this._value, this._then);
+
+  final FirestorePosition _value;
+  // ignore: unused_field
+  final $Res Function(FirestorePosition) _then;
+
+  @override
+  $Res call({
+    Object? geohash = freezed,
+    Object? geopoint = freezed,
+  }) {
+    return _then(_value.copyWith(
+      geohash: geohash == freezed
+          ? _value.geohash
+          : geohash // ignore: cast_nullable_to_non_nullable
+              as String,
+      geopoint: geopoint == freezed
+          ? _value.geopoint
+          : geopoint // ignore: cast_nullable_to_non_nullable
+              as GeoPoint,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_FirestorePositionCopyWith<$Res>
+    implements $FirestorePositionCopyWith<$Res> {
+  factory _$$_FirestorePositionCopyWith(_$_FirestorePosition value,
+          $Res Function(_$_FirestorePosition) then) =
+      __$$_FirestorePositionCopyWithImpl<$Res>;
+  @override
+  $Res call({String geohash, @GeoPointConverter() GeoPoint geopoint});
+}
+
+/// @nodoc
+class __$$_FirestorePositionCopyWithImpl<$Res>
+    extends _$FirestorePositionCopyWithImpl<$Res>
+    implements _$$_FirestorePositionCopyWith<$Res> {
+  __$$_FirestorePositionCopyWithImpl(
+      _$_FirestorePosition _value, $Res Function(_$_FirestorePosition) _then)
+      : super(_value, (v) => _then(v as _$_FirestorePosition));
+
+  @override
+  _$_FirestorePosition get _value => super._value as _$_FirestorePosition;
+
+  @override
+  $Res call({
+    Object? geohash = freezed,
+    Object? geopoint = freezed,
+  }) {
+    return _then(_$_FirestorePosition(
+      geohash: geohash == freezed
+          ? _value.geohash
+          : geohash // ignore: cast_nullable_to_non_nullable
+              as String,
+      geopoint: geopoint == freezed
+          ? _value.geopoint
+          : geopoint // ignore: cast_nullable_to_non_nullable
+              as GeoPoint,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_FirestorePosition implements _FirestorePosition {
+  const _$_FirestorePosition(
+      {this.geohash = '',
+      @GeoPointConverter() this.geopoint = const GeoPoint(35.6812, 139.7671)});
+
+  factory _$_FirestorePosition.fromJson(Map<String, dynamic> json) =>
+      _$$_FirestorePositionFromJson(json);
+
+  @override
+  @JsonKey()
+  final String geohash;
+  @override
+  @JsonKey()
+  @GeoPointConverter()
+  final GeoPoint geopoint;
+
+  @override
+  String toString() {
+    return 'FirestorePosition(geohash: $geohash, geopoint: $geopoint)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FirestorePosition &&
+            const DeepCollectionEquality().equals(other.geohash, geohash) &&
+            const DeepCollectionEquality().equals(other.geopoint, geopoint));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(geohash),
+      const DeepCollectionEquality().hash(geopoint));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_FirestorePositionCopyWith<_$_FirestorePosition> get copyWith =>
+      __$$_FirestorePositionCopyWithImpl<_$_FirestorePosition>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FirestorePositionToJson(this);
+  }
+}
+
+abstract class _FirestorePosition implements FirestorePosition {
+  const factory _FirestorePosition(
+      {final String geohash,
+      @GeoPointConverter() final GeoPoint geopoint}) = _$_FirestorePosition;
+
+  factory _FirestorePosition.fromJson(Map<String, dynamic> json) =
+      _$_FirestorePosition.fromJson;
+
+  @override
+  String get geohash;
+  @override
+  @GeoPointConverter()
+  GeoPoint get geopoint;
+  @override
+  @JsonKey(ignore: true)
+  _$$_FirestorePositionCopyWith<_$_FirestorePosition> get copyWith =>
       throw _privateConstructorUsedError;
 }

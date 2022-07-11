@@ -1,22 +1,33 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type, todo
+
 part of 'message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Message _$$_MessageFromJson(Map<String, dynamic> json) => _$_Message(
-      messageId: json['messageId'] as String,
-      createdAt: const AutoTimestampConverter().fromJson(json['createdAt']),
-      type: json['type'] as String? ?? 'plain',
-      senderId: json['senderId'] as String,
-      body: json['body'] as String,
-      imageURLs: (json['imageURLs'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const <String>[],
-      isDeleted: json['isDeleted'] as bool? ?? false,
+_$_Message _$$_MessageFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_Message',
+      json,
+      ($checkedConvert) {
+        final val = _$_Message(
+          messageId: $checkedConvert('messageId', (v) => v as String? ?? ''),
+          createdAt: $checkedConvert(
+              'createdAt', (v) => const AutoTimestampConverter().fromJson(v)),
+          type: $checkedConvert('type', (v) => v as String? ?? 'plain'),
+          senderId: $checkedConvert('senderId', (v) => v as String? ?? ''),
+          body: $checkedConvert('body', (v) => v as String? ?? ''),
+          imageURLs: $checkedConvert(
+              'imageURLs',
+              (v) =>
+                  (v as List<dynamic>?)?.map((e) => e as String).toList() ??
+                  const <String>[]),
+          isDeleted: $checkedConvert('isDeleted', (v) => v as bool? ?? false),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$_MessageToJson(_$_Message instance) =>

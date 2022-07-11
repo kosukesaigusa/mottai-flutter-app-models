@@ -12,29 +12,11 @@ part of 'read_status.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ReadStatus _$ReadStatusFromJson(Map<String, dynamic> json) {
   return _ReadStatus.fromJson(json);
 }
-
-/// @nodoc
-class _$ReadStatusTearOff {
-  const _$ReadStatusTearOff();
-
-  _ReadStatus call({@AutoTimestampConverter() DateTime? lastReadAt}) {
-    return _ReadStatus(
-      lastReadAt: lastReadAt,
-    );
-  }
-
-  ReadStatus fromJson(Map<String, Object?> json) {
-    return ReadStatus.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ReadStatus = _$ReadStatusTearOff();
 
 /// @nodoc
 mixin _$ReadStatus {
@@ -77,29 +59,30 @@ class _$ReadStatusCopyWithImpl<$Res> implements $ReadStatusCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ReadStatusCopyWith<$Res> implements $ReadStatusCopyWith<$Res> {
-  factory _$ReadStatusCopyWith(
-          _ReadStatus value, $Res Function(_ReadStatus) then) =
-      __$ReadStatusCopyWithImpl<$Res>;
+abstract class _$$_ReadStatusCopyWith<$Res>
+    implements $ReadStatusCopyWith<$Res> {
+  factory _$$_ReadStatusCopyWith(
+          _$_ReadStatus value, $Res Function(_$_ReadStatus) then) =
+      __$$_ReadStatusCopyWithImpl<$Res>;
   @override
   $Res call({@AutoTimestampConverter() DateTime? lastReadAt});
 }
 
 /// @nodoc
-class __$ReadStatusCopyWithImpl<$Res> extends _$ReadStatusCopyWithImpl<$Res>
-    implements _$ReadStatusCopyWith<$Res> {
-  __$ReadStatusCopyWithImpl(
-      _ReadStatus _value, $Res Function(_ReadStatus) _then)
-      : super(_value, (v) => _then(v as _ReadStatus));
+class __$$_ReadStatusCopyWithImpl<$Res> extends _$ReadStatusCopyWithImpl<$Res>
+    implements _$$_ReadStatusCopyWith<$Res> {
+  __$$_ReadStatusCopyWithImpl(
+      _$_ReadStatus _value, $Res Function(_$_ReadStatus) _then)
+      : super(_value, (v) => _then(v as _$_ReadStatus));
 
   @override
-  _ReadStatus get _value => super._value as _ReadStatus;
+  _$_ReadStatus get _value => super._value as _$_ReadStatus;
 
   @override
   $Res call({
     Object? lastReadAt = freezed,
   }) {
-    return _then(_ReadStatus(
+    return _then(_$_ReadStatus(
       lastReadAt: lastReadAt == freezed
           ? _value.lastReadAt
           : lastReadAt // ignore: cast_nullable_to_non_nullable
@@ -129,19 +112,20 @@ class _$_ReadStatus implements _ReadStatus {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ReadStatus &&
+            other is _$_ReadStatus &&
             const DeepCollectionEquality()
                 .equals(other.lastReadAt, lastReadAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(lastReadAt));
 
   @JsonKey(ignore: true)
   @override
-  _$ReadStatusCopyWith<_ReadStatus> get copyWith =>
-      __$ReadStatusCopyWithImpl<_ReadStatus>(this, _$identity);
+  _$$_ReadStatusCopyWith<_$_ReadStatus> get copyWith =>
+      __$$_ReadStatusCopyWithImpl<_$_ReadStatus>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -150,8 +134,8 @@ class _$_ReadStatus implements _ReadStatus {
 }
 
 abstract class _ReadStatus implements ReadStatus {
-  const factory _ReadStatus({@AutoTimestampConverter() DateTime? lastReadAt}) =
-      _$_ReadStatus;
+  const factory _ReadStatus(
+      {@AutoTimestampConverter() final DateTime? lastReadAt}) = _$_ReadStatus;
 
   factory _ReadStatus.fromJson(Map<String, dynamic> json) =
       _$_ReadStatus.fromJson;
@@ -161,6 +145,6 @@ abstract class _ReadStatus implements ReadStatus {
   DateTime? get lastReadAt;
   @override
   @JsonKey(ignore: true)
-  _$ReadStatusCopyWith<_ReadStatus> get copyWith =>
+  _$$_ReadStatusCopyWith<_$_ReadStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }

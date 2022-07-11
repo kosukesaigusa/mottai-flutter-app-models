@@ -12,44 +12,11 @@ part of 'account.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Account _$AccountFromJson(Map<String, dynamic> json) {
   return _Account.fromJson(json);
 }
-
-/// @nodoc
-class _$AccountTearOff {
-  const _$AccountTearOff();
-
-  _Account call(
-      {required String accountId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      bool isHost = false,
-      String? displayName,
-      String? imageURL,
-      List<String> providers = const <String>[],
-      List<String> fcmTokens = const <String>[]}) {
-    return _Account(
-      accountId: accountId,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-      isHost: isHost,
-      displayName: displayName,
-      imageURL: imageURL,
-      providers: providers,
-      fcmTokens: fcmTokens,
-    );
-  }
-
-  Account fromJson(Map<String, Object?> json) {
-    return Account.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Account = _$AccountTearOff();
 
 /// @nodoc
 mixin _$Account {
@@ -59,8 +26,8 @@ mixin _$Account {
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   bool get isHost => throw _privateConstructorUsedError;
-  String? get displayName => throw _privateConstructorUsedError;
-  String? get imageURL => throw _privateConstructorUsedError;
+  String get displayName => throw _privateConstructorUsedError;
+  String get imageURL => throw _privateConstructorUsedError;
   List<String> get providers => throw _privateConstructorUsedError;
   List<String> get fcmTokens => throw _privateConstructorUsedError;
 
@@ -78,8 +45,8 @@ abstract class $AccountCopyWith<$Res> {
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
       bool isHost,
-      String? displayName,
-      String? imageURL,
+      String displayName,
+      String imageURL,
       List<String> providers,
       List<String> fcmTokens});
 }
@@ -123,11 +90,11 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       providers: providers == freezed
           ? _value.providers
           : providers // ignore: cast_nullable_to_non_nullable
@@ -141,29 +108,30 @@ class _$AccountCopyWithImpl<$Res> implements $AccountCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
-  factory _$AccountCopyWith(_Account value, $Res Function(_Account) then) =
-      __$AccountCopyWithImpl<$Res>;
+abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
+  factory _$$_AccountCopyWith(
+          _$_Account value, $Res Function(_$_Account) then) =
+      __$$_AccountCopyWithImpl<$Res>;
   @override
   $Res call(
       {String accountId,
       @AutoTimestampConverter() DateTime? createdAt,
       @AutoTimestampConverter() DateTime? updatedAt,
       bool isHost,
-      String? displayName,
-      String? imageURL,
+      String displayName,
+      String imageURL,
       List<String> providers,
       List<String> fcmTokens});
 }
 
 /// @nodoc
-class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
-    implements _$AccountCopyWith<$Res> {
-  __$AccountCopyWithImpl(_Account _value, $Res Function(_Account) _then)
-      : super(_value, (v) => _then(v as _Account));
+class __$$_AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
+    implements _$$_AccountCopyWith<$Res> {
+  __$$_AccountCopyWithImpl(_$_Account _value, $Res Function(_$_Account) _then)
+      : super(_value, (v) => _then(v as _$_Account));
 
   @override
-  _Account get _value => super._value as _Account;
+  _$_Account get _value => super._value as _$_Account;
 
   @override
   $Res call({
@@ -176,7 +144,7 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
     Object? providers = freezed,
     Object? fcmTokens = freezed,
   }) {
-    return _then(_Account(
+    return _then(_$_Account(
       accountId: accountId == freezed
           ? _value.accountId
           : accountId // ignore: cast_nullable_to_non_nullable
@@ -196,17 +164,17 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
       displayName: displayName == freezed
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       providers: providers == freezed
-          ? _value.providers
+          ? _value._providers
           : providers // ignore: cast_nullable_to_non_nullable
               as List<String>,
       fcmTokens: fcmTokens == freezed
-          ? _value.fcmTokens
+          ? _value._fcmTokens
           : fcmTokens // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -217,19 +185,22 @@ class __$AccountCopyWithImpl<$Res> extends _$AccountCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Account implements _Account {
   const _$_Account(
-      {required this.accountId,
+      {this.accountId = '',
       @AutoTimestampConverter() this.createdAt,
       @AutoTimestampConverter() this.updatedAt,
       this.isHost = false,
-      this.displayName,
-      this.imageURL,
-      this.providers = const <String>[],
-      this.fcmTokens = const <String>[]});
+      this.displayName = '',
+      this.imageURL = '',
+      final List<String> providers = const <String>[],
+      final List<String> fcmTokens = const <String>[]})
+      : _providers = providers,
+        _fcmTokens = fcmTokens;
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
       _$$_AccountFromJson(json);
 
   @override
+  @JsonKey()
   final String accountId;
   @override
   @AutoTimestampConverter()
@@ -237,19 +208,30 @@ class _$_Account implements _Account {
   @override
   @AutoTimestampConverter()
   final DateTime? updatedAt;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isHost;
   @override
-  final String? displayName;
-  @override
-  final String? imageURL;
   @JsonKey()
+  final String displayName;
   @override
-  final List<String> providers;
   @JsonKey()
+  final String imageURL;
+  final List<String> _providers;
   @override
-  final List<String> fcmTokens;
+  @JsonKey()
+  List<String> get providers {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_providers);
+  }
+
+  final List<String> _fcmTokens;
+  @override
+  @JsonKey()
+  List<String> get fcmTokens {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fcmTokens);
+  }
 
   @override
   String toString() {
@@ -260,7 +242,7 @@ class _$_Account implements _Account {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Account &&
+            other is _$_Account &&
             const DeepCollectionEquality().equals(other.accountId, accountId) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
@@ -268,10 +250,13 @@ class _$_Account implements _Account {
             const DeepCollectionEquality()
                 .equals(other.displayName, displayName) &&
             const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
-            const DeepCollectionEquality().equals(other.providers, providers) &&
-            const DeepCollectionEquality().equals(other.fcmTokens, fcmTokens));
+            const DeepCollectionEquality()
+                .equals(other._providers, _providers) &&
+            const DeepCollectionEquality()
+                .equals(other._fcmTokens, _fcmTokens));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -281,13 +266,13 @@ class _$_Account implements _Account {
       const DeepCollectionEquality().hash(isHost),
       const DeepCollectionEquality().hash(displayName),
       const DeepCollectionEquality().hash(imageURL),
-      const DeepCollectionEquality().hash(providers),
-      const DeepCollectionEquality().hash(fcmTokens));
+      const DeepCollectionEquality().hash(_providers),
+      const DeepCollectionEquality().hash(_fcmTokens));
 
   @JsonKey(ignore: true)
   @override
-  _$AccountCopyWith<_Account> get copyWith =>
-      __$AccountCopyWithImpl<_Account>(this, _$identity);
+  _$$_AccountCopyWith<_$_Account> get copyWith =>
+      __$$_AccountCopyWithImpl<_$_Account>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -297,14 +282,14 @@ class _$_Account implements _Account {
 
 abstract class _Account implements Account {
   const factory _Account(
-      {required String accountId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      bool isHost,
-      String? displayName,
-      String? imageURL,
-      List<String> providers,
-      List<String> fcmTokens}) = _$_Account;
+      {final String accountId,
+      @AutoTimestampConverter() final DateTime? createdAt,
+      @AutoTimestampConverter() final DateTime? updatedAt,
+      final bool isHost,
+      final String displayName,
+      final String imageURL,
+      final List<String> providers,
+      final List<String> fcmTokens}) = _$_Account;
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
 
@@ -319,15 +304,15 @@ abstract class _Account implements Account {
   @override
   bool get isHost;
   @override
-  String? get displayName;
+  String get displayName;
   @override
-  String? get imageURL;
+  String get imageURL;
   @override
   List<String> get providers;
   @override
   List<String> get fcmTokens;
   @override
   @JsonKey(ignore: true)
-  _$AccountCopyWith<_Account> get copyWith =>
+  _$$_AccountCopyWith<_$_Account> get copyWith =>
       throw _privateConstructorUsedError;
 }
