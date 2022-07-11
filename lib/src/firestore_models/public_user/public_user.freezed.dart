@@ -12,36 +12,11 @@ part of 'public_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PublicUser _$PublicUserFromJson(Map<String, dynamic> json) {
   return _PublicUser.fromJson(json);
 }
-
-/// @nodoc
-class _$PublicUserTearOff {
-  const _$PublicUserTearOff();
-
-  _PublicUser call(
-      {required String userId,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      required String displayName,
-      String? imageURL}) {
-    return _PublicUser(
-      userId: userId,
-      updatedAt: updatedAt,
-      displayName: displayName,
-      imageURL: imageURL,
-    );
-  }
-
-  PublicUser fromJson(Map<String, Object?> json) {
-    return PublicUser.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PublicUser = _$PublicUserTearOff();
 
 /// @nodoc
 mixin _$PublicUser {
@@ -49,7 +24,7 @@ mixin _$PublicUser {
   @AutoTimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
-  String? get imageURL => throw _privateConstructorUsedError;
+  String get imageURL => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,7 +41,7 @@ abstract class $PublicUserCopyWith<$Res> {
       {String userId,
       @AutoTimestampConverter() DateTime? updatedAt,
       String displayName,
-      String? imageURL});
+      String imageURL});
 }
 
 /// @nodoc
@@ -100,33 +75,34 @@ class _$PublicUserCopyWithImpl<$Res> implements $PublicUserCopyWith<$Res> {
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$PublicUserCopyWith<$Res> implements $PublicUserCopyWith<$Res> {
-  factory _$PublicUserCopyWith(
-          _PublicUser value, $Res Function(_PublicUser) then) =
-      __$PublicUserCopyWithImpl<$Res>;
+abstract class _$$_PublicUserCopyWith<$Res>
+    implements $PublicUserCopyWith<$Res> {
+  factory _$$_PublicUserCopyWith(
+          _$_PublicUser value, $Res Function(_$_PublicUser) then) =
+      __$$_PublicUserCopyWithImpl<$Res>;
   @override
   $Res call(
       {String userId,
       @AutoTimestampConverter() DateTime? updatedAt,
       String displayName,
-      String? imageURL});
+      String imageURL});
 }
 
 /// @nodoc
-class __$PublicUserCopyWithImpl<$Res> extends _$PublicUserCopyWithImpl<$Res>
-    implements _$PublicUserCopyWith<$Res> {
-  __$PublicUserCopyWithImpl(
-      _PublicUser _value, $Res Function(_PublicUser) _then)
-      : super(_value, (v) => _then(v as _PublicUser));
+class __$$_PublicUserCopyWithImpl<$Res> extends _$PublicUserCopyWithImpl<$Res>
+    implements _$$_PublicUserCopyWith<$Res> {
+  __$$_PublicUserCopyWithImpl(
+      _$_PublicUser _value, $Res Function(_$_PublicUser) _then)
+      : super(_value, (v) => _then(v as _$_PublicUser));
 
   @override
-  _PublicUser get _value => super._value as _PublicUser;
+  _$_PublicUser get _value => super._value as _$_PublicUser;
 
   @override
   $Res call({
@@ -135,7 +111,7 @@ class __$PublicUserCopyWithImpl<$Res> extends _$PublicUserCopyWithImpl<$Res>
     Object? displayName = freezed,
     Object? imageURL = freezed,
   }) {
-    return _then(_PublicUser(
+    return _then(_$_PublicUser(
       userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -151,7 +127,7 @@ class __$PublicUserCopyWithImpl<$Res> extends _$PublicUserCopyWithImpl<$Res>
       imageURL: imageURL == freezed
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -160,23 +136,26 @@ class __$PublicUserCopyWithImpl<$Res> extends _$PublicUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PublicUser implements _PublicUser {
   const _$_PublicUser(
-      {required this.userId,
+      {this.userId = '',
       @AutoTimestampConverter() this.updatedAt,
-      required this.displayName,
-      this.imageURL});
+      this.displayName = '',
+      this.imageURL = ''});
 
   factory _$_PublicUser.fromJson(Map<String, dynamic> json) =>
       _$$_PublicUserFromJson(json);
 
   @override
+  @JsonKey()
   final String userId;
   @override
   @AutoTimestampConverter()
   final DateTime? updatedAt;
   @override
+  @JsonKey()
   final String displayName;
   @override
-  final String? imageURL;
+  @JsonKey()
+  final String imageURL;
 
   @override
   String toString() {
@@ -187,7 +166,7 @@ class _$_PublicUser implements _PublicUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PublicUser &&
+            other is _$_PublicUser &&
             const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality()
@@ -195,6 +174,7 @@ class _$_PublicUser implements _PublicUser {
             const DeepCollectionEquality().equals(other.imageURL, imageURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -205,8 +185,8 @@ class _$_PublicUser implements _PublicUser {
 
   @JsonKey(ignore: true)
   @override
-  _$PublicUserCopyWith<_PublicUser> get copyWith =>
-      __$PublicUserCopyWithImpl<_PublicUser>(this, _$identity);
+  _$$_PublicUserCopyWith<_$_PublicUser> get copyWith =>
+      __$$_PublicUserCopyWithImpl<_$_PublicUser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -216,10 +196,10 @@ class _$_PublicUser implements _PublicUser {
 
 abstract class _PublicUser implements PublicUser {
   const factory _PublicUser(
-      {required String userId,
-      @AutoTimestampConverter() DateTime? updatedAt,
-      required String displayName,
-      String? imageURL}) = _$_PublicUser;
+      {final String userId,
+      @AutoTimestampConverter() final DateTime? updatedAt,
+      final String displayName,
+      final String imageURL}) = _$_PublicUser;
 
   factory _PublicUser.fromJson(Map<String, dynamic> json) =
       _$_PublicUser.fromJson;
@@ -232,9 +212,9 @@ abstract class _PublicUser implements PublicUser {
   @override
   String get displayName;
   @override
-  String? get imageURL;
+  String get imageURL;
   @override
   @JsonKey(ignore: true)
-  _$PublicUserCopyWith<_PublicUser> get copyWith =>
+  _$$_PublicUserCopyWith<_$_PublicUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

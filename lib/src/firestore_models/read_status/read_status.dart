@@ -16,7 +16,6 @@ class ReadStatus with _$ReadStatus {
   factory ReadStatus.fromDocumentSnapshot(DocumentSnapshot ds) {
     final data = ds.data()! as Map<String, dynamic>;
     return ReadStatus.fromJson(<String, dynamic>{
-      'userId': ds.id,
       ...data,
     });
   }

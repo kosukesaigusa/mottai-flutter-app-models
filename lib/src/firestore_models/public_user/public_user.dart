@@ -8,10 +8,10 @@ part 'public_user.g.dart';
 @freezed
 class PublicUser with _$PublicUser {
   const factory PublicUser({
-    required String userId,
+    @Default('') String userId,
     @AutoTimestampConverter() DateTime? updatedAt,
-    required String displayName,
-    String? imageURL,
+    @Default('') String displayName,
+    @Default('') String imageURL,
   }) = _PublicUser;
 
   factory PublicUser.fromJson(Map<String, dynamic> json) => _$PublicUserFromJson(json);

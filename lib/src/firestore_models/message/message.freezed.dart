@@ -12,48 +12,18 @@ part of 'message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Message _$MessageFromJson(Map<String, dynamic> json) {
   return _Message.fromJson(json);
 }
 
 /// @nodoc
-class _$MessageTearOff {
-  const _$MessageTearOff();
-
-  _Message call(
-      {required String messageId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      String type = 'plain',
-      required String senderId,
-      required String body,
-      List<String> imageURLs = const <String>[],
-      bool isDeleted = false}) {
-    return _Message(
-      messageId: messageId,
-      createdAt: createdAt,
-      type: type,
-      senderId: senderId,
-      body: body,
-      imageURLs: imageURLs,
-      isDeleted: isDeleted,
-    );
-  }
-
-  Message fromJson(Map<String, Object?> json) {
-    return Message.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Message = _$MessageTearOff();
-
-/// @nodoc
 mixin _$Message {
   String get messageId => throw _privateConstructorUsedError;
   @AutoTimestampConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt =>
+      throw _privateConstructorUsedError; // TODO: コンバータも定義して enum にしたい
   String get type => throw _privateConstructorUsedError;
   String get senderId => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
@@ -131,9 +101,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
-  factory _$MessageCopyWith(_Message value, $Res Function(_Message) then) =
-      __$MessageCopyWithImpl<$Res>;
+abstract class _$$_MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
+  factory _$$_MessageCopyWith(
+          _$_Message value, $Res Function(_$_Message) then) =
+      __$$_MessageCopyWithImpl<$Res>;
   @override
   $Res call(
       {String messageId,
@@ -146,13 +117,13 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
-    implements _$MessageCopyWith<$Res> {
-  __$MessageCopyWithImpl(_Message _value, $Res Function(_Message) _then)
-      : super(_value, (v) => _then(v as _Message));
+class __$$_MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
+    implements _$$_MessageCopyWith<$Res> {
+  __$$_MessageCopyWithImpl(_$_Message _value, $Res Function(_$_Message) _then)
+      : super(_value, (v) => _then(v as _$_Message));
 
   @override
-  _Message get _value => super._value as _Message;
+  _$_Message get _value => super._value as _$_Message;
 
   @override
   $Res call({
@@ -164,7 +135,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? imageURLs = freezed,
     Object? isDeleted = freezed,
   }) {
-    return _then(_Message(
+    return _then(_$_Message(
       messageId: messageId == freezed
           ? _value.messageId
           : messageId // ignore: cast_nullable_to_non_nullable
@@ -186,7 +157,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           : body // ignore: cast_nullable_to_non_nullable
               as String,
       imageURLs: imageURLs == freezed
-          ? _value.imageURLs
+          ? _value._imageURLs
           : imageURLs // ignore: cast_nullable_to_non_nullable
               as List<String>,
       isDeleted: isDeleted == freezed
@@ -201,34 +172,44 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Message implements _Message {
   const _$_Message(
-      {required this.messageId,
+      {this.messageId = '',
       @AutoTimestampConverter() this.createdAt,
       this.type = 'plain',
-      required this.senderId,
-      required this.body,
-      this.imageURLs = const <String>[],
-      this.isDeleted = false});
+      this.senderId = '',
+      this.body = '',
+      final List<String> imageURLs = const <String>[],
+      this.isDeleted = false})
+      : _imageURLs = imageURLs;
 
   factory _$_Message.fromJson(Map<String, dynamic> json) =>
       _$$_MessageFromJson(json);
 
   @override
+  @JsonKey()
   final String messageId;
   @override
   @AutoTimestampConverter()
   final DateTime? createdAt;
-  @JsonKey()
+// TODO: コンバータも定義して enum にしたい
   @override
+  @JsonKey()
   final String type;
   @override
+  @JsonKey()
   final String senderId;
   @override
+  @JsonKey()
   final String body;
-  @JsonKey()
+  final List<String> _imageURLs;
   @override
-  final List<String> imageURLs;
   @JsonKey()
+  List<String> get imageURLs {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageURLs);
+  }
+
   @override
+  @JsonKey()
   final bool isDeleted;
 
   @override
@@ -240,16 +221,18 @@ class _$_Message implements _Message {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Message &&
+            other is _$_Message &&
             const DeepCollectionEquality().equals(other.messageId, messageId) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.senderId, senderId) &&
             const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality().equals(other.imageURLs, imageURLs) &&
+            const DeepCollectionEquality()
+                .equals(other._imageURLs, _imageURLs) &&
             const DeepCollectionEquality().equals(other.isDeleted, isDeleted));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -258,13 +241,13 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(senderId),
       const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(imageURLs),
+      const DeepCollectionEquality().hash(_imageURLs),
       const DeepCollectionEquality().hash(isDeleted));
 
   @JsonKey(ignore: true)
   @override
-  _$MessageCopyWith<_Message> get copyWith =>
-      __$MessageCopyWithImpl<_Message>(this, _$identity);
+  _$$_MessageCopyWith<_$_Message> get copyWith =>
+      __$$_MessageCopyWithImpl<_$_Message>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -274,13 +257,13 @@ class _$_Message implements _Message {
 
 abstract class _Message implements Message {
   const factory _Message(
-      {required String messageId,
-      @AutoTimestampConverter() DateTime? createdAt,
-      String type,
-      required String senderId,
-      required String body,
-      List<String> imageURLs,
-      bool isDeleted}) = _$_Message;
+      {final String messageId,
+      @AutoTimestampConverter() final DateTime? createdAt,
+      final String type,
+      final String senderId,
+      final String body,
+      final List<String> imageURLs,
+      final bool isDeleted}) = _$_Message;
 
   factory _Message.fromJson(Map<String, dynamic> json) = _$_Message.fromJson;
 
@@ -289,7 +272,7 @@ abstract class _Message implements Message {
   @override
   @AutoTimestampConverter()
   DateTime? get createdAt;
-  @override
+  @override // TODO: コンバータも定義して enum にしたい
   String get type;
   @override
   String get senderId;
@@ -301,6 +284,6 @@ abstract class _Message implements Message {
   bool get isDeleted;
   @override
   @JsonKey(ignore: true)
-  _$MessageCopyWith<_Message> get copyWith =>
+  _$$_MessageCopyWith<_$_Message> get copyWith =>
       throw _privateConstructorUsedError;
 }

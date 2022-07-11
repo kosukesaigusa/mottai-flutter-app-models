@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, implicit_dynamic_parameter, implicit_dynamic_type, implicit_dynamic_method, strict_raw_type, todo
+
 part of 'host_location.dart';
 
 // **************************************************************************
@@ -7,17 +9,32 @@ part of 'host_location.dart';
 // **************************************************************************
 
 _$_HostLocation _$$_HostLocationFromJson(Map<String, dynamic> json) =>
-    _$_HostLocation(
-      hostLocationId: json['hostLocationId'] as String,
-      createdAt: const AutoTimestampConverter().fromJson(json['createdAt']),
-      updatedAt: const AutoTimestampConverter().fromJson(json['updatedAt']),
-      title: json['title'] as String,
-      hostId: json['hostId'] as String,
-      address: json['address'] as String,
-      description: json['description'] as String,
-      imageURL: json['imageURL'] as String,
-      position: const FirestorePositionConverter()
-          .fromJson(json['position'] as Map<String, dynamic>),
+    $checkedCreate(
+      r'_$_HostLocation',
+      json,
+      ($checkedConvert) {
+        final val = _$_HostLocation(
+          hostLocationId:
+              $checkedConvert('hostLocationId', (v) => v as String? ?? ''),
+          createdAt: $checkedConvert(
+              'createdAt', (v) => const AutoTimestampConverter().fromJson(v)),
+          updatedAt: $checkedConvert(
+              'updatedAt', (v) => const AutoTimestampConverter().fromJson(v)),
+          title: $checkedConvert('title', (v) => v as String? ?? ''),
+          hostId: $checkedConvert('hostId', (v) => v as String? ?? ''),
+          address: $checkedConvert('address', (v) => v as String? ?? ''),
+          description:
+              $checkedConvert('description', (v) => v as String? ?? ''),
+          imageURL: $checkedConvert('imageURL', (v) => v as String? ?? ''),
+          position: $checkedConvert(
+              'position',
+              (v) => v == null
+                  ? FirestorePosition.defaultValue
+                  : const FirestorePositionConverter()
+                      .fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$_HostLocationToJson(_$_HostLocation instance) =>
@@ -31,4 +48,28 @@ Map<String, dynamic> _$$_HostLocationToJson(_$_HostLocation instance) =>
       'description': instance.description,
       'imageURL': instance.imageURL,
       'position': const FirestorePositionConverter().toJson(instance.position),
+    };
+
+_$_FirestorePosition _$$_FirestorePositionFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_FirestorePosition',
+      json,
+      ($checkedConvert) {
+        final val = _$_FirestorePosition(
+          geohash: $checkedConvert('geohash', (v) => v as String? ?? ''),
+          geopoint: $checkedConvert(
+              'geopoint',
+              (v) => v == null
+                  ? const GeoPoint(35.6812, 139.7671)
+                  : const GeoPointConverter().fromJson(v as GeoPoint)),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$$_FirestorePositionToJson(
+        _$_FirestorePosition instance) =>
+    <String, dynamic>{
+      'geohash': instance.geohash,
+      'geopoint': const GeoPointConverter().toJson(instance.geopoint),
     };
