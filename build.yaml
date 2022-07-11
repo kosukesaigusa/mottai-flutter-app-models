@@ -7,8 +7,7 @@ targets:
       freezed:
         generate_for:
           include:
-            - lib/providers/**/*state.dart
-            - lib/models/**/*.dart
+            - lib/src/**/*.dart
       json_serializable:
         options:
           checked: true
