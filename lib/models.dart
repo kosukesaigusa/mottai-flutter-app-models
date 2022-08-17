@@ -7,5 +7,5 @@ export './src/firestore_models/firestore_models.dart';
 /// firestore repositories
 export './src/firestore_repositories/firestore_repositories.dart';
 
-/// playgrounds
-export './src/playgrounds/playgrounds.dart';
+/// json_converters
+export './src/json_converters/json_converters.dart';
